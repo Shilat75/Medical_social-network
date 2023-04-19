@@ -25,6 +25,7 @@ jobs:
           name: CD - Deploy the server
           command: curl " https://api.render.com/deploy/srv-cgvu1l1euhlhlbi23f4g?key=aP7wqDs_g3Y"  
 
+
 workflows: 
   example-workflow: 
     jobs: 
