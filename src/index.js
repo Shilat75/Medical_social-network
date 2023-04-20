@@ -18,7 +18,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
    res.sendFile('pages/Homepage.html', { root: './' });
 });
-app.get('/HomePage.css', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile('pages/HomePage.css', { root: './' });
 });
 app.get('/Login', (req, res) => {
