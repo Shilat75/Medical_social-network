@@ -12,6 +12,9 @@ const app = express();
 app.get('/', (req, res) => {
   res.sendFile('pages/Homepage.html', { root: './' });
 });
+app.get('/getstyle', (req, res) => {
+  res.sendFile('HomePage.css', { root: './' });
+});
 
 // app.get('/Login', (req, res) => {
 //   res.sendFile('pages/login.html', { root: './' });
