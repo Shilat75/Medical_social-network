@@ -18,6 +18,16 @@ app.use(express.json());
 app.get('/', (req, res) => {
    res.sendFile('pages/index.html', { root: './' });
 });
+app.get('/getstyle', (req, res) => {
+  res.sendFile('pages/HomePage.css', { root: './' });
+});
+app.get('/Login', (req, res) => {
+  res.sendFile('pages/Login.html', { root: './' });
+});
+app.get('/getLstyle', (req, res) => {
+  res.sendFile('pages/Login.css', { root: './' });
+});
+
 
 app.get('/Login', (req, res) => {
    res.sendFile('pages/login.html', { root: './' });
