@@ -3,7 +3,7 @@ import pkg from 'pg';
 const {Client} = pkg;
 
 const client = new Client({
-  user: 'shilat',
+  user: 'shilatH',
   host: 'dpg-cgugbmg2qv2fdedbo640-a.frankfurt-postgres.onrender.com',
   database: 'juniyoudb',
   password: 'puMtqvjlq7ftkPfuvHwZFKUuZ5tlWQiV',
