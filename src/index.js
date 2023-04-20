@@ -3,10 +3,18 @@ import express from 'express';
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.get('/', (req, res) => {
-  console.log('A new request has arrived to index.js');
+//app.get('/', (req, res) => {
+ // console.log('A new request has arrived to index.js');
  // res.send(file://C:/Users/Administrator/Project_manag/pages/Homepage.html');
   res.sendFile( /Users/Administrator/Project_manag+ "/pages/Homepage.html");
+//});
+
+app.get('/', (req, res) => {
+  res.sendFile('pages/index.html', { root: './' });
+});
+
+app.get('/Login', (req, res) => {
+  res.sendFile('pages/login.html', { root: './' });
 });
 
 app.listen(port, () => {
