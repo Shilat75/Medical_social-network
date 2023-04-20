@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="Login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=width-device" initial-scale="1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dancing+Script:wght@700&family=Montserrat&family=Petit+Formal+Script&family=Poppins:wght@800&family=Satisfy&display=swap" rel="stylesheet">    
+    <script src="Login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pg@8.7.1/dist/pg.min.js"></script>
+    <script src="logintest.test.js"></script>
+
+
+  </head>   
+ <body>
+    <main>
+        
+        <div class="bg-img">
+            <nav>
+                <ul>
+                    <li><a href="index.html"><span>Home</span></a></li></ul>
+                    <div class="logo"><span>
+                        <h1>Mental Medical</h1></span>
+                    </div>
+
+    
+            </nav>
+            <hr>
+            <div class="loginbox">
+                <div class="font">
+
+                    <h4>Login</h4>
+
+                    <div class="textbox">  <input type="text" id="email-input" placeholder="Enter Username"></div>
+                     <div class="textbox">  <input type="text" id="password-input" placeholder="Enter Password"></div>
+                     <button type="submit" onclick="validate(document.getElementById('email-input').value, document.getElementById('password-input').value)">Submit</button>
+                    
+                     <ul>
+                     <li><a><h6>Forgot Password</h6></a><a><h6>Sign Up</h6></a></li></ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+  const submitButton = document.querySelector('button[type="submit"]');
+  submitButton.addEventListener('click', function() {
+    validate(document.getElementById('email-input').value, document.getElementById('password-input').value);
+  });
+});
+
+    </script>
+    
+    
+ </body>
+
+</html>
