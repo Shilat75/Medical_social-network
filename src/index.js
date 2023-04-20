@@ -13,8 +13,15 @@ app.get('/', (req, res) => {
   res.sendFile('pages/Homepage.html', { root: './' });
 });
 app.get('/getstyle', (req, res) => {
-  res.sendFile('HomePage.css', { root: './' });
+  res.sendFile('pages/HomePage.css', { root: './' });
 });
+app.get('/Login', (req, res) => {
+  res.sendFile('pages/Login.html', { root: './' });
+});
+app.get('/getLstyle', (req, res) => {
+  res.sendFile('pages/Login.css', { root: './' });
+});
+
 
 // app.get('/Login', (req, res) => {
 //   res.sendFile('pages/login.html', { root: './' });
