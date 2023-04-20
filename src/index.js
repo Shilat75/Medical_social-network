@@ -4,65 +4,17 @@ const {Client} = pkg;
 
 const client = new Client({
   user: 'shilat',
-  host: 'dpg-cgugbmg2qv2fdedbo640-a.frankfurt-postgres.onrender.com',
-  database: 'juniyoudb',
-  password: 'puMtqvjlq7ftkPfuvHwZFKUuZ5tlWQiV',
-  port: 10000,
+  host: 'dpg-ch0llaj3cv2c5b5o7nug-a',
+  database: 'd_nbwf',
+  password: '0J3XBf05m6IfzTX8YHH46OFruMkj2mPM',
+  port: 5432,
   ssl: true
 });
-
-
 const port = process.env.PORT || 80;
 const app = express();
 app.use(express.json());
 
-function clean(str)
-{
-   for(var i=0; i < str.length ; i++)
-   {
-      if (str[i]<'a' || str[i]>'z')
-      {
-         if (str[i]<'A' || str[i]>'Z')
-         {
-            if (str[i]<'0' || str[i]>'9')
-            {
-               if(str[i]!= '@' && str[i]!= '.')
-               {
-                  return false;
-               }
-            }
-         }
-      }
-   }
-   return true;
-}
-function clean_fullname(str)
-{
-   for(var i=0; i < str.length ; i++)
-   {
-      if (str[i]<'a' || str[i]>'z')
-      {
-         if (str[i]<'A' || str[i]>'Z')
-         {
-            if (str[i]<'0' || str[i]>'9')
-            {
-               if(str[i]!= '@' && str[i]!= '.')
-               {
-                  if(str[i] == ' ' && str.indexOf(' ') == str.lastIndexOf(' '))
-                  {
-                     continue;
-                  }
-                  else
-                  {
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-   }
-   return true;
-}
+
 app.get('/', (req, res) => {
    res.sendFile('pages/index.html', { root: './' });
 });
