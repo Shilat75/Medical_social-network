@@ -7,7 +7,7 @@ const client = new Client({
   host: 'dpg-cgugbmg2qv2fdedbo640-a.frankfurt-postgres.onrender.com',
   database: 'juniyoudb',
   password: 'puMtqvjlq7ftkPfuvHwZFKUuZ5tlWQiV',
-  port: 5432,
+  port: 1000,
   ssl: true
 });
 
