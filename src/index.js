@@ -10,12 +10,12 @@ const app = express();
 //g});
 
 app.get('/', (req, res) => {
-  res.sendFile('pages/index.html', { root: './' });
+  res.sendFile('pages/Homepage.html', { root: './' });
 });
 
-app.get('/Login', (req, res) => {
-  res.sendFile('pages/login.html', { root: './' });
-});
+// app.get('/Login', (req, res) => {
+//   res.sendFile('pages/login.html', { root: './' });
+// });
 
 app.listen(port, () => {
   console.log(`Server is up and runnig at port: ${port}`);
