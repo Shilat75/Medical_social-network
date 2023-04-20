@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/', (req, res) => {
   console.log('A new request has arrived to index.js');
-  res.send('Hello main Page 3');
+  res.send('file:///C:/Users/Administrator/Project_manag/pages/Homepage.html');
 });
 
 app.listen(port, () => {
