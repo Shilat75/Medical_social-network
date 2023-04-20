@@ -10,7 +10,7 @@ const app = express();
 //g});
 
 app.get('/', (req, res) => {
-  res.sendFile('pages/Homepage.html', { root: './' });
+  res.sendFile('pages/Homepage.html');
 });
 
 // app.get('/Login', (req, res) => {
