@@ -16,3 +16,15 @@ services:
 build:
   # Use Dockerfile in the root of the repo
   dockerfile: Dockerfile
+
+# Error handling
+error_handling:
+  - type: service
+    name: web
+    ignore_errors: true
+    except:
+      - type: object
+        actions:
+          - type: log
+            level: error
+            message: "Encountered a ZeroDivisionError: division by zero"
