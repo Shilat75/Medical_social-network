@@ -1,0 +1,30 @@
+# Render YAML file
+
+# Services
+services:
+  - name: web
+    dockerfile: Dockerfile
+    env:
+      - key: PORT
+        value: 8080
+    # set the internal port to match the value of PORT
+    internal_port: 8080
+    # define the command to start the service
+    start_cmd: gunicorn app:app --bind 0.0.0.0:$PORT --worker-class aiohttp.GunicornWebWorker
+
+# Build
+build:
+  # Use Dockerfile in the root of the repo
+  dockerfile: Dockerfile
+
+# Error handling
+error_handling:
+  - type: service
+    name: web
+    ignore_errors: true
+    except:
+      - type: object
+        actions:
+          - type: log
+            level: error
+            message: "Encountered a ZeroDivisionError: division by zero"
