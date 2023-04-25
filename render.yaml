@@ -1,30 +1,32 @@
-# Render YAML file
+# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
+version: 2.1
 
-# Services
-services:
-  - name: web
-    dockerfile: Dockerfile
-    env:
-      - key: PORT
-        value: 8080
-    # set the internal port to match the value of PORT
-    internal_port: 8080
-    # define the command to start the service
-    start_cmd: gunicorn app:app --bind 0.0.0.0:$PORT --worker-class aiohttp.GunicornWebWorker
+# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
+# See: https://circleci.com/docs/2.0/orb-intro/
+orbs:
+  node: circleci/node@4.7
 
-# Build
-build:
-  # Use Dockerfile in the root of the repo
-  dockerfile: Dockerfile
-
-# Error handling
-error_handling:
-  - type: service
-    name: web
-    ignore_errors: true
-    except:
-      - type: object
-        actions:
-          - type: log
-            level: error
-            message: "Encountered a ZeroDivisionError: division by zero"
+jobs: 
+  cicd-job: 
+    executor: 
+      name: node/default
+    steps: 
+      - checkout
+      - run: 
+          name: install dependencies - NPM packages
+          command: npm install
+      - run: 
+          name: run tests
+          command: npm run test
+      - run: 
+          name: Run linter
+          command: npm run lint
+      - run: 
+          name: CD - Deploy the service
+          command: curl "https://api.render.com/deploy/srv-ch0m3ujh4hsukp3ue4rg?key=Gd0mD1K9ops"
+          
+workflows: 
+  example-workflow: 
+    jobs: 
+      - cicd-job
+   
