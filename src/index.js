@@ -23,10 +23,10 @@ app.get('/', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile('pages/HomePage.css', { root: './' });
 });
-app.get('/Login', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile('pages/Login.html', { root: './' });
 });
-app.get('/getLstyle', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile('pages/Login.css', { root: './' });
 });
 
