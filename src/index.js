@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile('pages/HomePage.css', { root: './' });
 });
-app.get('/', (req, res) => {
+app.get('/Login', (req, res) => {
   res.sendFile('pages/Login.html', { root: './' });
 });
 app.get('/', (req, res) => {
