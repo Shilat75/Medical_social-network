@@ -27,6 +27,7 @@ app.get('/Login', (req, res) => {
 app.get('/getLstyle', (req, res) => {
   res.sendFile('pages/Login.css', { root: './' });
 });
+app.use(express.static('public'));
 
 
 // app.get('/Login', (req, res) => {
