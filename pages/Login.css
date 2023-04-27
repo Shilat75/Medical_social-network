@@ -169,16 +169,27 @@ button:hover{
       }
         
       .loginbox ul li a{
-          font-size: 20px;
-          padding: 20px 10px;;
+          font-size: 35px;
+          padding: 20px 10px;
+          margin:30px;
       }
       .textbox input[type="text"] {
           font-size: 15px;
       }
       
       .loginbox{
-          width:350px;
-          height:150px;
+          width:550px;
+          height:550px;
+          margin: 150px;
+
+      }
+      .textbox{
+        height:45px;
+        width:330px;
+      }
+      button{
+        height:50px;
+        width:230px;
       }
     
 
@@ -202,8 +213,8 @@ button:hover{
     }
     
     .loginbox{
-        width:20vw;
-        height: 20vh;
+        width:350px;
+        height: 250px;
     }
   
 
