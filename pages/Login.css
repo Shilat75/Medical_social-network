@@ -184,7 +184,7 @@ button:hover{
 
       }
       .textbox{
-        height:45px;
+        height:35px;
         width:330px;
       }
       button{
@@ -213,12 +213,8 @@ button:hover{
     }
     
     .loginbox{
-        width:350px;
-        height: 170px;
-        top:8%;
+        width:150px;
 
     }
-  
-
     
   }
