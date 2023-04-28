@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CICD Tutorail Haredmi Campus",
   "main": "index.js",
-  "type": "module",
+  "type": "Commonjs",
   "scripts": {
     "dev": "nodemon src/index.js",
     "lint": "eslint src/* --color",
@@ -31,7 +31,12 @@
     "eslint": "^8.38.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "esm": "^3.2.25",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.22"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": []
 }
