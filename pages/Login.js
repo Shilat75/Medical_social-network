@@ -1,4 +1,8 @@
-const { Pool } = require('pg');
+import pkg from 'pg';
+const { Pool } = pkg;
+
+import alert from 'alert';
+
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
@@ -7,41 +11,24 @@ const pool = new Pool({
   port: 5432,
 });
 
-pool.connect((err) => {
-  if (err) {
-    console.error('Error connecting to database:', err);
-    return;
+pool.connect();
+
+function validate(username, password, callback) {
+  if(username===""|| password==="")
+  {
+    alert("99");
   }
-  console.log('Connected to database successfully!');
-});
-
-function validate(email, password, callback) {
-    // Check if email and password are not empty
-    if (email === "" || password === "") {
-      callback(new Error("Please enter your email and password"));
-      return;
+  pool.query(`SELECT * FROM users WHERE username = $1 AND password = $2`, [username, password], (err, res) => {
+    if (err) {
+      console.log(err.message);
+      callback(false);
+    } else if (res.rows.length > 0) {
+      console.log(`${username}`);
+      callback(true);
+    } else {
+      callback(false);
     }
-
-    // query the database to check if the credentials are valid
-    pool.query(`
-      SELECT * FROM users WHERE username = $1 AND password = $2
-    `, [email, password], (error, results) => {
-      if (error) {
-        callback(error);
-        return;
-      }
-      if (results.rows.length === 1) {
-        // if the query returns exactly one row, the credentials are valid
-        console.log('Login successful!');
-        callback(null, "Login successful!");
-      } else {
-        // otherwise, the credentials are invalid
-        console.log('Invalid email or password.');
-        console.log(results.rows.length);
-
-        callback(new Error("Invalid email or password."));
-      }
-    });
+    pool.end();
+  });
 }
-
 

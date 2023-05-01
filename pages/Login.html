@@ -9,53 +9,74 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dancing+Script:wght@700&family=Montserrat&family=Petit+Formal+Script&family=Poppins:wght@800&family=Satisfy&display=swap" rel="stylesheet">    
-    <script src="Login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pg@8.7.1/dist/pg.min.js"></script>
     <script src="logintest.test.js"></script>
-
-
   </head>   
  <body>
-    <main>
-        
+    <main>     
         <div class="bg-img">
-            <nav>
-                <ul>
-                    <li><a href="index.html"><span>Home</span></a></li></ul>
-                    <div class="logo"><span>
-                        <h1>Mental Medical</h1></span>
-                    </div>
-
-    
+            <nav>    
+                <div class="logo">
+                    <span><h1>Mental Medical</h1></span>
+                    <ul>
+                        <li><a href="Homepage.html"><span>Home</span></a></li>
+                    </ul>
+                </div>    
             </nav>
             <hr>
             <div class="loginbox">
                 <div class="font">
-
                     <h4>Login</h4>
-
-                    <div class="textbox">  <input type="text" id="email-input" placeholder="Enter Username"></div>
-                     <div class="textbox">  <input type="text" id="password-input" placeholder="Enter Password"></div>
-                     <button type="submit" onclick="validate(document.getElementById('email-input').value, document.getElementById('password-input').value)">Submit</button>
-                    
-                     <ul>
-                     <li><a><h6>Forgot Password</h6></a><a><h6>Sign Up</h6></a></li></ul>
+                    <form id="login-form">
+                      <div class="textbox">
+                        <input type="text" id="email-input" placeholder="Enter Username">
+                      </div>
+                      <div class="textbox">
+                        <input type="text" id="password-input" placeholder="Enter Password">
+                      </div>
+                      <button type="submit" onclick="validate(document.getElementById('email-input').value,document.getElementById('password-input').value,()=>{})">Submit</button>
+                    </form>
+                    <ul>
+                      <li><a><h6>Forgot Password</h6></a><a><h6>Sign Up</h6></a></li>
+                    </ul>
                 </div>
             </div>
-
         </div>
+       
     </main>
-    <script>
-      window.addEventListener('DOMContentLoaded', function() {
-  const submitButton = document.querySelector('button[type="submit"]');
-  submitButton.addEventListener('click', function() {
-    validate(document.getElementById('email-input').value, document.getElementById('password-input').value);
-  });
+    <!-- <script>
+      import pkg from 'pg';
+      const { Pool } = pkg;
+
+import alert from 'alert';
+
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'MENTAL_MEDICAL',
+  password: '99898898',
+  port: 5432,
 });
 
-    </script>
-    
-    
- </body>
+pool.connect();
 
+function validate(username, password, callback) {
+  alert('000')
+  pool.query(`SELECT * FROM users WHERE username = $1 AND password = $2`, [username, password], (err, res) => {
+    if (err) {
+      console.log(err.message);
+      callback(false);
+    } else if (res.rows.length > 0) {
+      console.log(`${username}`);
+      callback(true);
+    } else {
+      callback(false);
+    }
+    pool.end();
+  });
+}
+
+    </script> -->
+ </body>
+ 
 </html>
