@@ -16,7 +16,6 @@ const port = process.env.PORT || 80;
 const app = express();
 app.use(express.static('pages'));
 
-
 app.use(express.json());
 
 app.get('/', (req, res) => {
