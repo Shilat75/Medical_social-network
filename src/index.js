@@ -10,6 +10,7 @@ const client = new Client({
  port: 5432,
  ssl: true
 });
+client.connect();
 const port = process.env.PORT || 80;
 const app = express();
 app.use(express.json());
@@ -18,13 +19,13 @@ app.use(express.json());
 app.get('/', (req, res) => {
    res.sendFile('pages/Homepage.html', { root: './' });
 });
-app.get('/', (req, res) => {
+app.get('/HomePage.css', (req, res) => {
   res.sendFile('pages/HomePage.css', { root: './' });
 });
 app.get('/Login', (req, res) => {
   res.sendFile('pages/Login.html', { root: './' });
 });
-app.get('/getLstyle', (req, res) => {
+app.get('/Login.css', (req, res) => {
   res.sendFile('pages/Login.css', { root: './' });
 });
 
