@@ -4,7 +4,7 @@ import pkg from 'pg';
 
 const { Client } = pkg;
 
-new Client({
+Client({
   user: 'shilat',
   host: 'dpg-ch0llaj3cv2c5b5o7nug-a',
   database: 'd_nbwf',
