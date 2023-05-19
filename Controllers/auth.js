@@ -48,7 +48,7 @@ router.post('/register', async (req, res) => {
     console.error('Error saving user:', error);
     res.status(500).send('An error occurred while saving the user');
   }
-  r
+  
 });
 
 module.exports = router;
