@@ -1,54 +1,55 @@
-const express = require('express');
-const mongoose=require('mongoose');
-const User=require('../models/user');
-const router=express.Router();
+const User = require('../models/users');
 
-// Route for adding a new user
-router.post('/register', async (req, res) => {
-  const { username, email, password, address, name, phone } = req.body;
+// Handle sign-in request
+exports.signin = (req, res) => {
+  const { email, password } = req.body;
 
-  // Check if the email is in a valid format
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.status(400).send('Invalid Email Format');
-  }
+  // Find user by email and password
+  User.findOne({ email, password })
+    .then(user => {
+      if (user) {
+        // Store user details in the session
+        //req.session.user = user;
+        res.status(200).json({ message: 'Sign in successful' });
 
-  // Check the length and special characters in the password
-  if (password.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-    return res.status(400).send('Invalid Password Format');
-  }
+      } else {
+        res.status(401).json({ error: 'Invalid credentials' });
+      }
+    })
+    .catch(error => {
+      console.error('Sign in error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    });
+};
+// Handle sign-up request
+exports.signup = (req, res) => {
+  const { email, password, username } = req.body;
+  const level = 'starter';
+  // Check if the user already exists in the database
+  User.findOne({ $or: [{ email }, { username }] })
+    .then(existingUser => {
+      if (existingUser) {
+        if (existingUser.email === email) {
+          res.status(400).json({ error: 'Email already exists' });
+        
+        }
+      } else {
+        // Create a new user
+        const newUser = new User({ email, password, username ,level});
 
-  // Check if the username already exists in the system
-  const existingUsername = await User.findOne({ username });
-  if (existingUsername) {
-    return res.status(400).send('Username Already Exists');
-  }
-
-  // Check if the email already exists in the system
-  const existingEmail = await User.findOne({ email });
-  if (existingEmail) {
-    return res.status(400).send('Email Already Exists');
-  }
-
-  // Create a new user
-  const newUser = new User({
-    username,
-    email,
-    password,
-    address,
-    name,
-    phone
-  });
-
-  try {
-    // Save the new user to the database
-    const savedUser = await newUser.save();
-    res.status(201).json({ message: 'User created successfully', user: savedUser });
-  } catch (error) {
-    console.error('Error saving user:', error);
-    res.status(500).send('An error occurred while saving the user');
-  }
-  
-});
-
-module.exports = router;
+        // Save the user to the database
+        newUser.save()
+          .then(() => {
+            res.status(200).json({ message: 'Sign up successful' });
+          })
+          .catch(error => {
+            console.error('Sign up error:', error);
+            res.status(500).json({ error: 'Internal server error' });
+          });
+      }
+    })
+    .catch(error => {
+      console.error('User lookup error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    });
+};
