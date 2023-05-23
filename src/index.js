@@ -2,10 +2,9 @@ const express = require('express');
 const { Client } = require('pg');
 const mongoose = require('mongoose');
 const path = require('path');
-
 const authRouter = require('./../Controllers/auth');
-
-const client = new Client({
+const { Client } = pkg;
+new Client({
   user: 'shilat',
   host: 'dpg-ch0llaj3cv2c5b5o7nug-a',
   database: 'd_nbwf',
