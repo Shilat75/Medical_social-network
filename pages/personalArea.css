@@ -51,22 +51,56 @@ nav ul li a span {
   }
 
   main {
-    background-color: rgba(113, 183, 134, 0.8);
-    padding: 20px;
+    background-color: rgba(205, 238, 215, 0.2);
+    padding: 5px;
   }
   
   h1 {
     color: #ffffff;
     font-size: 24px;
   }
+
+  .profile-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
-  h2 {
+  .profile-icons div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 130px;
+  }
+  
+  .profile-icons img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 1px;
+    animation: glowingFrame 4s ease-in-out infinite;
+  }
+  @keyframes glowingFrame {
+    0% {
+      box-shadow: 0 0 5px #00ff00; /* Start with a green shadow */
+    }
+    50% {
+      box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00; /* Intermediate shadow sizes and color */
+    }
+    100% {
+      box-shadow: 0 0 5px #00ff00; /* Return to a smaller green shadow */
+    }
+  }  
+  
+  .profile-icons p {
     color: #333333;
-    font-size: 28px;
+    font-size: 14px;
+    font-weight: bold; /* Add bold font weight */
+    text-transform: uppercase; /* Apply uppercase text transformation */
+    letter-spacing: 1px; /* Add letter spacing */
+  
   }
   
-  p {
-    color: #666666;
-    font-size: 16px;
+  .profile-icons a:last-child {
+    margin-right: 0;
   }
-  
