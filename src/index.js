@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('./../Controllers/auth');
 // const { Client } = pkg;
-const user = require('./../models/user');
+const User = require('./../models/user');
 
 const client = new Client({
   user: 'shilat',
@@ -25,6 +25,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('Connected to MongoDB');
     app.listen(port, () => {
       console.log(`Listening on port ${port}`);
+      
     });
   })
   .catch((err) => console.log(err));
@@ -34,6 +35,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   })
 db.once('open',()=>{
   console.log('database connection established!');
+  
 })
 /*app.use(express.static('pages'));
 app.use(express.json());*/
@@ -47,11 +49,9 @@ app.use((req, res, next) => {
 });
 
 
-  app.get('/Try', (req, res) => {
-    
-    res.sendFile(path.join(__dirname, '../pages/Try.html'));
-  
-  const User = new User({
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
+/*  const user = new User({
     username: 'new blog',
     email: 'about my new blog',
     password: 'more about my new blog',
@@ -66,11 +66,7 @@ app.use((req, res, next) => {
     })
     .catch(err => {
       console.log(err);
-    });
-  });
-app.get('/', (req, res) => {
-  console.log("Helooooooooo");
-  res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
+    });*/
 });
 app.get('/HomePage.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
@@ -95,6 +91,7 @@ app.get('/register.css', (req, res) => {
 // Add POST route for '/register'
 app.post('/register', (req, res) => {
   // Handle registration logic here
+  
   res.send('Registration successful');
 });
 
