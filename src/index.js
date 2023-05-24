@@ -3,8 +3,10 @@ const { Client } = require('pg');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('./../Controllers/auth');
-const { Client } = pkg;
-new Client({
+// const { Client } = pkg;
+const user = require('./../models/user');
+
+const client = new Client({
   user: 'shilat',
   host: 'dpg-ch0llaj3cv2c5b5o7nug-a',
   database: 'd_nbwf',
@@ -16,7 +18,8 @@ new Client({
 const port = process.env.PORT || 80;
 const app = express();
 // connect to MongoDB
-const dbURI = 'mongodb://0.0.0.0:27017';
+const dbURI ='mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/'
+//const dbURI = 'mongodb://0.0.0.0:27017';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     console.log('Connected to MongoDB');
@@ -32,15 +35,43 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 db.once('open',()=>{
   console.log('database connection established!');
 })
-app.use(express.static('pages'));
-app.use(express.json());
-app.use('/auth', authRouter);
-
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
+/*app.use(express.static('pages'));
+app.use(express.json());*/
+//app.use('/auth', authRouter);
+// middleware & static files
+app.use(express.static('public'));
+//app.use(morgan('dev'));
+app.use((req, res, next) => {
+  res.locals.path = req.path;
+  next();
 });
 
+
+  app.get('/Try', (req, res) => {
+    
+    res.sendFile(path.join(__dirname, '../pages/Try.html'));
+  
+  const User = new User({
+    username: 'new blog',
+    email: 'about my new blog',
+    password: 'more about my new blog',
+    phone: 'about my new blog',
+    address: 'about my new blog',
+    name: 'about my new blog',
+  });
+
+  user.save()
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  });
+app.get('/', (req, res) => {
+  console.log("Helooooooooo");
+  res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
+});
 app.get('/HomePage.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
 });

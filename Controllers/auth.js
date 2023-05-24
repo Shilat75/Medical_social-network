@@ -1,4 +1,4 @@
-const User = require('../models/users');
+/*const User = require('../models/user');
 
 // Handle sign-in request
 exports.signin = (req, res) => {
@@ -53,3 +53,4 @@ exports.signup = (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     });
 };
+*/
