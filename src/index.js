@@ -47,7 +47,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
  const user = new User({
-    username: 'Tair Mazuz33',
+    username: 'Tair Mazuz44',
     email: 'about my new blog',
     password: 'more about my new blog',
     phone: 'about my new blog',
