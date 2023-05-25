@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('./../Controllers/auth');
+const User = require('../models/user');
 
 const port = process.env.PORT || 80;
 const app = express();
