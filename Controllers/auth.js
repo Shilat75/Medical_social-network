@@ -23,6 +23,16 @@ exports.signin = (req, res) => {
 };*/
 // Handle sign-up request
 exports.signup = (req, res) => {
+  const user = new User({
+    username: 'Tair Mazuz55',
+    email: 'about my new blog',
+    password: 'more about my new blog',
+    phone: 'about my new blog',
+    address: 'about my new blog',
+    name: 'about my new blog',
+  });
+
+  user.save()
   const { email, password, username } = req.body;
   const level = 'starter';
   // Check if the user already exists in the database
@@ -37,16 +47,7 @@ exports.signup = (req, res) => {
         // Create a new user
         const newUser = new User({ email, password, username ,level});
        //try
-        const user = new User({
-          username: 'Tair Mazuz55',
-          email: 'about my new blog',
-          password: 'more about my new blog',
-          phone: 'about my new blog',
-          address: 'about my new blog',
-          name: 'about my new blog',
-        });
-      
-        user.save()
+
         //end of try
         // Save the user to the database
         newUser.save()
