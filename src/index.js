@@ -1,5 +1,5 @@
 const express = require('express');
-const { Client } = require('pg');
+
 const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('../Controllers/auth');
