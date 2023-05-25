@@ -3,17 +3,7 @@ const { Client } = require('pg');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('../Controllers/auth');
-// const { Client } = pkg;
-// const User = require('../models/user');
 
-const client = new Client({
-  user: 'shilat',
-  host: 'dpg-ch0llaj3cv2c5b5o7nug-a',
-  database: 'd_nbwf',
-  password: '0J3XBf05m6IfzTX8YHH46OFruMkj2mPM',
-  port: 5432,
-  ssl: true,
-});
 
 const port = process.env.PORT || 80;
 const app = express();
@@ -37,7 +27,7 @@ db.once('open', () => {
 });
 app.use(express.static('pages'));
 app.use(express.json());
-app.use('/auth', authRouter);
+//app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
   rxes.sendFile(path.join(__dirname, '../pages/Homepage.html'));
