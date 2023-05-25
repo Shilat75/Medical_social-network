@@ -8,7 +8,7 @@ const app = express();
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
+  .then((result) => {
     console.log('Connected to MongoDB');
     app.listen(port, () => {
       console.log(`Listening on port ${port}`);
@@ -26,32 +26,28 @@ db.once('open', () => {
 
 app.use(express.static('pages'));
 app.use(express.json());
+// app.use('/auth', authRouter);
 
-app.get('/', (_req, _res) => {
-  _res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
 });
-
-app.get('/HomePage.css', (_req, _res) => {
-  _res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
+app.get('/HomePage.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
 });
-
-app.get('/Login', (_req, _res) => {
-  _res.sendFile(path.join(__dirname, '../pages/Login.html'));
+app.get('/Login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/Login.html'));
 });
-
-app.get('/Login.css', (_req, _res) => {
-  _res.sendFile(path.join(__dirname, '../pages/Login.css'));
+app.get('/Login.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/Login.css'));
 });
-
-app.get('/register', (_req, _res) => {
-  _res.sendFile(path.join(__dirname, '../pages/register.html'));
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/register.html'));
 });
-
-app.get('/register.css', (_req, _res) => {
-  _res.sendFile(path.join(__dirname, '../pages/register.css'));
+app.get('/register.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
-
-app.post('/register', (_req, _res) => {
+// Add POST route for '/register'
+app.post('/register', (req, res) => {
   // Handle registration logic here
-  _res.send('Registration successful');
+  res.send('Registration successful');
 });
