@@ -38,7 +38,7 @@ exports.signup = (req, res) => {
         const newUser = new User({ email, password, username ,level});
        //try
         const user = new User({
-          username: 'Tair Mazuz44',
+          username: 'Tair Mazuz55',
           email: 'about my new blog',
           password: 'more about my new blog',
           phone: 'about my new blog',
