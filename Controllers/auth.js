@@ -1,5 +1,5 @@
-/*const User = require('../models/user');
-
+const User = require('../models/user');
+/*
 // Handle sign-in request
 exports.signin = (req, res) => {
   const { email, password } = req.body;
@@ -20,7 +20,7 @@ exports.signin = (req, res) => {
       console.error('Sign in error:', error);
       res.status(500).json({ error: 'Internal server error' });
     });
-};
+};*/
 // Handle sign-up request
 exports.signup = (req, res) => {
   const { email, password, username } = req.body;
@@ -36,7 +36,18 @@ exports.signup = (req, res) => {
       } else {
         // Create a new user
         const newUser = new User({ email, password, username ,level});
-
+       //try
+        const user = new User({
+          username: 'Tair Mazuz44',
+          email: 'about my new blog',
+          password: 'more about my new blog',
+          phone: 'about my new blog',
+          address: 'about my new blog',
+          name: 'about my new blog',
+        });
+      
+        user.save()
+        //end of try
         // Save the user to the database
         newUser.save()
           .then(() => {
@@ -53,4 +64,3 @@ exports.signup = (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     });
 };
-*/
