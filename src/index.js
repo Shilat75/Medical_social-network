@@ -37,22 +37,17 @@ db.once('open',()=>{
   console.log('database connection established!');
   
 })
-/*app.use(express.static('pages'));
-app.use(express.json());*/
+/app.use(express.static('pages'));
+app.use(express.json());
 //app.use('/auth', authRouter);
-// middleware & static files
-app.use(express.static('public'));
-//app.use(morgan('dev'));
-app.use((req, res, next) => {
-  res.locals.path = req.path;
-  next();
-});
+
+
 
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
-/*  const user = new User({
-    username: 'new blog',
+ const user = new User({
+    username: 'Tair Mazuz33',
     email: 'about my new blog',
     password: 'more about my new blog',
     phone: 'about my new blog',
@@ -66,7 +61,8 @@ app.get('/', (req, res) => {
     })
     .catch(err => {
       console.log(err);
-    });*/
+      res.status(500).send('Error occurred while saving the user.');
+    });
 });
 app.get('/HomePage.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
@@ -90,8 +86,7 @@ app.get('/register.css', (req, res) => {
 
 // Add POST route for '/register'
 app.post('/register', (req, res) => {
-  // Handle registration logic here
-  
+  // Handle registration logic here  
   res.send('Registration successful');
 });
 
