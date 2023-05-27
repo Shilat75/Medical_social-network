@@ -29,9 +29,11 @@ db.once('open', () => {
 app.use(express.static('pages'));
 app.use(express.json());
 //app.get('/auth', authRouter);
+
 app.get('/auth', (req, res) => {
   res.sendFile(path.join(__dirname, authRouter));
 });
+app.post('/', (req,res));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
