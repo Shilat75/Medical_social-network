@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+
 /*
 // Handle sign-in request
 exports.signin = (req, res) => {
@@ -24,6 +25,17 @@ exports.signin = (req, res) => {
 };*/
 // Handle sign-up request
 exports.signup = (req, res) => {
+  // try
+  const user = new User({
+    username: 'Tair Mazuz55',
+    email: 'about my new blog',
+    password: 'more about my new blog',
+    phone: 'about my new blog',
+    address: 'about my new blog',
+    name: 'about my new blog',
+  });
+
+  user.save()
  
   const { email, password, username } = req.body;
   const level = 'starter';
