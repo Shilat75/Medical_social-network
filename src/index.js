@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const authController = require('./Controllers/auth');
-const User = require('./models/user');
+const authRouter = require('./../Controllers/auth');
+const User = require('../models/user');
 
 const port = process.env.PORT || 80;
 const app = express();
@@ -55,7 +55,7 @@ app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'pages', 'register.css'));
 });
 
-app.post('/register', authController.signup);
+app.post('/register', authRouter.signup);
 
 // Start the server
 app.listen(port, () => {
