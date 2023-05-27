@@ -1,15 +1,5 @@
 const User = require('../models/user');
 
-const user = new User({
-  username: 'Tair Mazuz55',
-  email: 'about my new blog',
-  password: 'more about my new blog',
-  phone: 'about my new blog',
-  address: 'about my new blog',
-  name: 'about my new blog',
-});
-
-user.save()
 /*
 // Handle sign-in request
 exports.signin = (req, res) => {

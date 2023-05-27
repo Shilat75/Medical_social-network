@@ -28,20 +28,13 @@ db.once('open', () => {
 
 app.use(express.static('pages'));
 app.use(express.json());
-// app.use('/auth', authRouter);
+//app.get('/auth', authRouter);
+app.get('/auth', (req, res) => {
+  res.sendFile(path.join(__dirname, authRouter));
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
-  const user = new User({
-    username: 'Tair Mazuz55',
-    email: 'about my new blog',
-    password: 'more about my new blog',
-    phone: 'about my new blog',
-    address: 'about my new blog',
-    name: 'about my new blog',
-  });
-  
-  user.save()
 });
 app.get('/HomePage.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
