@@ -33,7 +33,11 @@ app.use('/auth', authRouter);
 /*app.get('/auth', (req, res) => {
   res.sendFile(path.join(__dirname, authRouter));
 });*/
-app.post('/', (req,res));
+app.post('/register', (req, res) => {
+  // Handle registration logic here
+  // You can call your signup function from the authController here
+  authController.signup(req, res);
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
