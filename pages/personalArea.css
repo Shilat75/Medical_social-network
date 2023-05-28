@@ -14,6 +14,29 @@ body {
     padding: 20px;
     text-align: center; /* Center align the content */
   }
+  /* CSS Styles for the post container */
+#postContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* CSS Styles for the individual post */
+.post {
+  width: 300px; /* Adjust the width as per your preference */
+  height: 300px;
+  background-color: #d1bfbf;
+  border-radius: 10px;
+  overflow:hidden;
+}
+
+.post img {
+  width:300px; /* Increase the width by 10 times */
+  height: 300px;
+  object-fit: cover;
+}
+
   
   header {
     padding-bottom: 20px;
