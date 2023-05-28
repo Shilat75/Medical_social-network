@@ -2,20 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('./../Controllers/auth');
-<<<<<<< HEAD
-const { Client } = pkg;
-
-new Client({
-  user: 'shilat',
-  host: 'dpg-ch0llaj3cv2c5b5o7nug-a',
-  database: 'd_nbwf',
-  password: '0J3XBf05m6IfzTX8YHH46OFruMkj2mPM',
-  port: 5432,
-  ssl: true,
-});
-=======
 const User = require('../models/user');
->>>>>>> cde983c088569ef3f5d0c11d150e64467eef01ac
 
 const port = process.env.PORT || 80;
 const app = express();
@@ -46,11 +33,8 @@ app.use('/auth', authRouter);
 /*app.get('/auth', (req, res) => {
   res.sendFile(path.join(__dirname, authRouter));
 });*/
-app.post('/register', (req, res) => {
-  // Handle registration logic here
-  // You can call your signup function from the authController here
-  authController.signup(req, res);
-});
+
+app.post('/', (req,res));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
