@@ -31,35 +31,30 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 app.use(express.static('pages'));
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Homepage.ejs'));
-});
+// app.post('/', (req,res));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
+});
 app.get('/HomePage.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
 });
-
 app.get('/Login', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Login.ejs'));
+  res.sendFile(path.join(__dirname, '../pages/Login.html'));
 });
-
 app.get('/Login.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Login.css'));
 });
-
 app.get('/register', (req, res) => {
-  res.render(path.join(__dirname, '../pages/register.ejs'));
+  res.sendFile(path.join(__dirname, '../pages/register.html'));
 });
-
 app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
-
-app.post('/register', postController.postA);
 
 // Route for registering a new user
 app.post('/register', async (req, res) => {
