@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const ejs = require('ejs');
 const authRouter = require('../Controllers/auth');
 const User = require('../models/user');
-const ejs = require('ejs');
 
 const port = process.env.PORT || 80;
 const app = express();
@@ -36,28 +36,28 @@ app.use('/auth', authRouter);
   res.sendFile(path.join(__dirname, authRouter));
 }); */
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.render(path.join(__dirname, '../pages/Homepage.ejs'));
 });
-app.get('/HomePage.css', function (req, res) {
+app.get('/HomePage.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/HomePage.css'));
 });
-app.get('/Login',function (req, res)  {
+app.get('/Login', (req, res) => {
   res.render(path.join(__dirname, '../pages/Login.ejs'));
 });
-app.get('/Login.css',function (req, res)   {
+app.get('/Login.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/Login.css'));
 });
-app.get('/register', function (req, res)   {
+app.get('/register', (req, res) => {
   res.render(path.join(__dirname, '../pages/register.ejs'));
 });
-app.get('/register.css', function (req, res)   {
+app.get('/register.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/register.css'));
 });
 
-app.post('/', (req,res));
+app.post('/', (req, res));
 
-/*app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.ejs'));
 });
 app.get('/HomePage.css', (req, res) => {
@@ -74,7 +74,7 @@ app.get('/register', (req, res) => {
 });
 app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
-});*/
+}); */
 // Add POST route for '/register'
 app.post('/register', (req, res) => {
   // Handle registration logic here
