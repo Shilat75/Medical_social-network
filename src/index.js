@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const authRouter = require('./../Controllers/auth');
+const authRouter = require('../Controllers/auth');
 const User = require('../models/user');
 
 const port = process.env.PORT || 80;
@@ -30,11 +30,11 @@ app.use(express.static('pages'));
 app.use(express.json());
 app.use('/auth', authRouter);
 
-/*app.get('/auth', (req, res) => {
+/* app.get('/auth', (req, res) => {
   res.sendFile(path.join(__dirname, authRouter));
-});*/
+}); */
 
-app.post('/', (req,res));
+app.post('/', (req, res));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
