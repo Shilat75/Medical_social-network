@@ -35,7 +35,7 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.render(path.join(__dirname, '../pages/Homepage.ejs'));
 });
 
@@ -57,8 +57,27 @@ app.get('/register', (req, res) => {
 
 app.get('/register.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/register.css'));
+});*/
+app.get('/', function (req, res) {
+  res.render(path.join(__dirname, '../pages/Homepage.ejs'));
+});
+app.get('/HomePage.css', function (req, res) {
+  res.render(path.join(__dirname, '../pages/HomePage.css'));
+});
+app.get('/Login',function (req, res)  {
+  res.render(path.join(__dirname, '../pages/Login.ejs'));
+});
+app.get('/Login.css',function (req, res)   {
+  res.render(path.join(__dirname, '../pages/Login.css'));
+});
+app.get('/register', function (req, res)   {
+  res.render(path.join(__dirname, '../pages/register.ejs'));
+});
+app.get('/register.css', function (req, res)   {
+  res.render(path.join(__dirname, '../pages/register.css'));
 });
 
+app.post('/', (req,res));
  
 // Route for registering a new user
 app.post('/register', async (req, res) => {
