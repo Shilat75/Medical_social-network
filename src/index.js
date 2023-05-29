@@ -36,27 +36,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Homepage.html'));
+  res.render(path.join(__dirname, '../pages/Homepage.ejs'));
 });
 
 app.get('/HomePage.css', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
+  res.render(path.join(__dirname, '../pages/HomePage.css'));
 });
 
 app.get('/Login', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Login.html'));
+  res.render(path.join(__dirname, '../pages/Login.ejs'));
 });
 
 app.get('/Login.css', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/Login.css'));
+  res.render(path.join(__dirname, '../pages/Login.css'));
 });
 
 app.get('/register', (req, res) => {
-  res.render(path.join(__dirname, '../pages/register.html'));
+  res.render(path.join(__dirname, '../pages/register.ejs'));
 });
 
 app.get('/register.css', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/register.css'));
+  res.render(path.join(__dirname, '../pages/register.css'));
 });
 
  
