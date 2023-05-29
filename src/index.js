@@ -55,7 +55,7 @@ app.get('/register.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/register.css'));
 });
 
-//app.post('/', (req, res));
+app.post('/', (req,res));
 
 /* app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.ejs'));
