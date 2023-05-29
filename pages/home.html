@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HealthConnect</title>
+  <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>HealthConnect</h1>
+      <nav>
+        <ul>
+          <li><a href="home.html"><img src="Images/iconHome.png" alt="Home"> Home</a></li>
+          <li><a href="contact.html"><img src="Images/conntect.png" alt="Contact"> Contact</a></li>
+          <li><a href="aboutAs.html"><img src="Images/about.png" alt="About Us"> About the Site</a></li>
+          <li><a href="personalArea.html"><img src="Images/profile.png" alt=" Profile"> Personal Profile</a></li>
+        </ul>
+
+      </nav>
+    </header>
+    <main>
+      <label>City:<input type="text" class="userCity"/></label>
+      <button>Send data</button>
+      <div class="divf" ></div>
+      <script>
+
+         
+        var myCity=document.querySelector(".userCity");
+        var myDiv=document.querySelector(".divf");
+            
+        button.addEventListener("click",()=>{
+            
+        var obj={
+                city:myCity.value,
+            }
+            fetch("/api",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+
+            },
+            body:JSON.stringify(obj)
+            }).then((r)=>r.json()).then((response)=>console.log(response));
+        
+        })
+
+        fetch("/api").then(r=>r.json()).then(data=>{
+            var dataDisplayed="";
+            for(var a of data.dataFound){
+                dataDisplayed+=`<p>The city is: ${a.city}</p>`;
+            }
+            myDiv.innerHTML+=dataDisplayed;
+        }).catch(e=>console.log(e));
+
+    </script>
+    </main>
+  </div>
+</body>
+</html>
