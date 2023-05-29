@@ -1,81 +1,43 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <title>Registration Page</title>
-    <link rel="stylesheet" href="register.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=width-device" initial-scale="1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dancing+Script:wght@700&family=Montserrat&family=Petit+Formal+Script&family=Poppins:wght@800&family=Satisfy&display=swap" rel="stylesheet">    
-    /<script src="https://cdn.jsdelivr.net/npm/pg@8.7.1/dist/pg.min.js"></script>
-    <script src="register.js"></script>
-  </head>   
- <body>
-    <main>     
-        <div class="bg-img">
-            <nav>    
-                <div class="logo">
-                    <span><h1>Mental Medical</h1></span>
-                    <ul>
-                        <li><a href="Homepage.ejs"><span>Home</span></a></li>
-                    </ul>
-                    
-                </div>    
-            </nav>
-            <hr>
-            
-              
-              
-            <div class="loginbox">
-                <div class="font">
-                    <h4>Sign-Up</h4>
-                    <form  id="login-form" action="/register" method="POST">
-                      <h6>*</h6>
-
-                      <div class="textbox">
-                        <input type="text" id="username-input" name="username"placeholder="Enter Username" required>
-                      </div>
-                      <h6>*</h6>
-
-                      <div class="textbox">
-                        <input type="text" id="email-input" name="email" placeholder="Enter email address" required>
-                        <span class="error-message"></span>
- 
-                    </div>
-                      <h6>* </h6>
-
-                      <div class="textbox">
-                        <input type="text" id="password-input" name="password" placeholder="Enter Password" required>
-                        <span class="error-message"></span>
-
-                      </div>
-                      <div class="textbox">
-                        <input type="text" id="name-input" placeholder="Enter Full Name">
-                      </div>
-                      <div class="textbox">
-                        <input type="text" id="address-input" placeholder="address">
-                      </div>
-                      <div class="textbox">
-                        <input type="text" id="phone-input" name="phone"placeholder="Mobile Number">
-                      </div>
-                      <button type="submit">Submit</button>
-
-                      <ul><li ><a href="#"><h5>Secure Account</h5></a></li></ul>
-                      
-                      </div>
-                      
-
-                    </form>
-                    
-                    
-                </div>
-            </div>
-        </div>
-       
-    </main>
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" type="text/css" href="log_in.css">
+</head>
+<body>
     
- </body>
- 
+  <div class="full-screen-container">
+    <div class="login-container">
+    <h3 class="login-title">Register</h3>
+    <% if (error) { %>
+        <div class="error-message">
+          <%= error %>
+        </div>
+      <% } %>
+    <form action="/register" method="POST">
+        <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+            <label for="username">User name:</label>
+            <input type="username" id="username" name="username" required>
+        </div>
+        <div  class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        </div>
+        <div class="input-group">
+            <label for="confirmpassword">Confirm Password:</label>
+            <input type="password" id="confirmpassword" name="confirmpassword" required>
+        </div>
+        <button type="submit" class="login-button">Register</button>
+        <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
+    </form>
+    
+ </div>
+</div>
+</body>
 </html>
