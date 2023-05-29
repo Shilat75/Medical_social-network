@@ -33,7 +33,7 @@
         var obj={
                 city:myCity.value,
             }
-            fetch("/api",{
+            fetch('/api',{
             method:"POST",
             headers:{
                 "Content-type":"application/json",
@@ -44,7 +44,7 @@
         
         })
 
-        fetch("/api").then(r=>r.json()).then(data=>{
+        fetch('/api').then(r=>r.json()).then(data=>{
             var dataDisplayed="";
             for(var a of data.dataFound){
                 dataDisplayed+=`<p>The city is: ${a.city}</p>`;
