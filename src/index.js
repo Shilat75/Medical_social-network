@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 //const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const myData = require('../pages/tempate');
+//const myData = require('../pages/tempate');
+const Post = require('../models/post');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -34,9 +35,17 @@ app.use(express.static('pages'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', routes);
+//app.use('/', routes);
 
 app.get('/', (req, res) => {
+  /*
+  const p = new post({
+    postname: 'Tair Mazuz55',
+    likes: 9,
+    data: 'more about my new blog',
+    uploadDate: 2022-12-01
+  });
+  p.save()*/
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
 });
 
@@ -71,9 +80,17 @@ app.get('/personalArea', (req, res) => {
     console.error('Error:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   });
-
 });
 
+app.get("/getPosts", async (request, response) => {
+  const listOfPost = await posts.find({});
+console.log(listOfPosts)
+  try {
+    response.send(listOfPost);
+  } catch (error) {
+    response.status(500).send(error);
+  }
+});
 app.get('/personalArea.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/personalArea.css'));
 });
