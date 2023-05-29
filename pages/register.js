@@ -1,4 +1,4 @@
-document.querySelector('.img__btn').addEventListener('click', function () {
+document.querySelector('.submit').addEventListener('click', function () {
   document.querySelector('.cont').classList.toggle('s--signup');
 });
 // Get DOM elements
@@ -77,7 +77,7 @@ function signIn(event) {
   }
 
   if (!validatePassword(password)) {
-    errorMsgIn.textContent = 'Password must be between 6 and 20 characters';
+    errorMsgIn.textContent = 'Password must be 8 characters';
     return;
   }
 
@@ -173,7 +173,7 @@ function signUp(event) {
   }
 
   if (!validatePassword(password)) {
-    errorMsgUp.textContent = 'Password must be between 6 and 20 characters';
+    errorMsgUp.textContent = 'Password must be 8 characters';
     return;
   }
 
