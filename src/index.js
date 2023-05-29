@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Homepage.ejs'));
+  res.render(path.join(__dirname, '../pages/Homepage.html'));
 });
 
 app.get('/HomePage.css', (req, res) => {
@@ -44,7 +44,7 @@ app.get('/HomePage.css', (req, res) => {
 });
 
 app.get('/Login', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Login.ejs'));
+  res.render(path.join(__dirname, '../pages/Login.html'));
 });
 
 app.get('/Login.css', (req, res) => {
@@ -52,16 +52,14 @@ app.get('/Login.css', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-  res.render(path.join(__dirname, '../pages/register.ejs'));
+  res.render(path.join(__dirname, '../pages/register.html'));
 });
 
 app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
 
-app.get('/home', (req, res) => {
-  res.render('home');
-});
+ 
 // Route for registering a new user
 app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;
