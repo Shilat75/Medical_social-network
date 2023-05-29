@@ -1,14 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-
-const routes = require('../Routes/userRoute');
-
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const myData = require('../pages/tempate');
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 const app = express();
 
 let userInfo;
@@ -63,6 +60,24 @@ app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
 
+app.get('/personalArea', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/personalArea.html'));
+  Post.find()
+  .then(posts => {
+    // Send the posts as a response
+    res.json(posts);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  });
+
+});
+
+app.get('/personalArea.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../pages/personalArea.css'));
+});
+
 app.post('/api', (req, res) => {
   async function sendData() {
     userInfo = await myData.create({
@@ -76,7 +91,8 @@ app.post('/api', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  try { async function search() {
+  try {
+    async function search() {
       dataFound = await myData.find();
       res.json({
         dataFound,
