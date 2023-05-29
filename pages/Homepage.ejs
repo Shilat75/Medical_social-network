@@ -1,153 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Programmers network</title>
-  <link rel="stylesheet" href="HomePage.css">
-
-<script>
-
-function loadPage() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/page_loader');
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onload = function () {
-        var t = JSON.parse(this.responseText);
-        document.getElementById("page_content").innerHTML = (t.response);
-        document.getElementById("main_menu").innerHTML = t.menu;
-    };
-
-    xhr.send(JSON.stringify({
-      "info": "homepage"
-    }));
-}
-
-function AddPost() {
-    var title = document.getElementById("titleInput").value;
-    var content = document.getElementById("contentText").value;
-    if (title.length<5 || content.length < 10)
-    {
-      alert("Minimum title length is 5, minimun content length is 10");
-      return;
-    }
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/update_post_data');
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onload = function () {
-        var t = JSON.parse(this.responseText);
-        if (t.response === '0')
-        {
-            alert("Added successfully");
-            window.location.reload();
-        }
-        else
-        {
-            alert("Error occured");
-        }
-    };
-
-    xhr.send(JSON.stringify({
-      "title": title,
-      "content": content,
-      "action": "addpost"
-    }));
-}
-
-function SavePost(p) {
-    var title = document.getElementById("titlein"+p).value;
-    var content = document.getElementById("contentTe"+p).value;
-    if (title.length<5 || content.length < 10)
-    {
-      alert("Minimum title length is 5, minimun content length is 10");
-      return;
-    }
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/update_post_data');
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onload = function () {
-        var t = JSON.parse(this.responseText);
-        if (t.response === '0')
-        {
-            alert("Saved successfully");
-            window.location.reload();
-        }
-        else
-        {
-            alert("Error occured");
-        }
-    };
-
-    xhr.send(JSON.stringify({
-      "title": title,
-      "content": content,
-      "action": "updatepost",
-      "post1": p
-    }));
-}
-function DeletePost(p) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/update_post_data');
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onload = function () {
-        var t = JSON.parse(this.responseText);
-        if (t.response === '0')
-        {
-            alert("Deleted successfully");
-            window.location.reload();
-        }
-        else
-        {
-            alert("Error occured");
-        }
-    };
-
-    xhr.send(JSON.stringify({
-      "action": "deletepost",
-      "post": p
-    }));
-}
-
-</script>
-<script src="/getjs"></script> 
-</head>
-<body onload="loadPage();">
-<script>
-
-  function ChangeSelection(s)
-{
-    
-      eles = document.getElementsByClassName("opt");
-      for (var i=1;i<eles.length+1;i++)
-      {
-        if (i!=s)
-        {
-          document.getElementById("pills-"+i).style.display = "none";
-          eles[i-1].style.background="none";
-        }
-        else
-        {
-          document.getElementById("pills-"+i).style.display = "block";
-          eles[i-1].style.background="cyan";
-        }
-      }
+<html>
+ <head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="HomePage.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=width-device" initial-scale="1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Dancing+Script:wght@700&family=Montserrat&family=Petit+Formal+Script&family=Poppins:wght@800&family=Satisfy&display=swap" rel="stylesheet">    
+    <script src="https://cdn.jsdelivr.net/npm/pg@8.7.1/dist/pg.min.js"></script>
+  </head>   
+ <body>
+    <main>
         
-}
+        <div class="bg-img">
+            <nav>
+                <ul>
+                  <li><a href="home.htm">Home</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </nav>
+              <section class="intro">
+                <div class="container">
+                  <h1>Welcome to Mental Medical</h1>
+                  <p>We provide high quality services for all your needs.</p>
+                  <button class="btn btn-primary">Learn More</button>
+                  <button class="btn btn-primary">
+                    <li><a href="Login.html">Login</a></li>
+                  </button>
 
-</script>
-<nav class="skew-menu">
-  <ul id="main_menu">
-    
-  </ul>
-</nav>
-<div id="page_content"></div>
-  
-</body>
+                </div>
+                </div>
+              </section>
+              
+            
+ </body>
+
 </html>
