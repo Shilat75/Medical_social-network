@@ -4,13 +4,13 @@ const path = require('path');
 // const bcrypt = require('bcrypt');
 const User = require('../models/user');
 // const myData = require('../pages/tempate');
-const Post = require('../models/post');
+// const Post = require('../models/post');
 
 const port = process.env.PORT || 3000;
 const app = express();
 
-let userInfo;
-let dataFound;
+// let userInfo;
+// let dataFound;
 
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
@@ -71,7 +71,7 @@ app.get('/register.css', (req, res) => {
 
 app.get('/personalArea', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/personalArea.html'));
-  Post.find()
+  /* Post.find()
     .then((posts) => {
     // Send the posts as a response
       res.json(posts);
@@ -79,10 +79,10 @@ app.get('/personalArea', (req, res) => {
     .catch((error) => {
       console.error('Error:', error);
       res.status(500).json({ error: 'Internal Server Error' });
-    });
+    }); */
 });
 
-app.get('/getPosts', async (request, response) => {
+/* app.get('/getPosts', async (request, response) => {
   const listOfPost = await posts.find({});
   console.log(listOfPosts);
   try {
@@ -90,11 +90,11 @@ app.get('/getPosts', async (request, response) => {
   } catch (error) {
     response.status(500).send(error);
   }
-});
+}); */
 app.get('/personalArea.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/personalArea.css'));
 });
-
+/*
 app.post('/api', (req, res) => {
   async function sendData() {
     userInfo = await myData.create({
@@ -120,7 +120,7 @@ app.get('/api', (req, res) => {
     console.log(e);
   }
 });
-
+*/
 // Route for registering a new user
 app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;

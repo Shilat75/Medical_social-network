@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const router = express.Router();
 
 const posts = require('../models/post');
@@ -18,3 +18,4 @@ app.get("/users", async (request, response) => {
       response.status(500).send(error);
     }
   });
+  */
