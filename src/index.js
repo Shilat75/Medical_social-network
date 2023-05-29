@@ -1,15 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const myData = require('../pages/tempate');
+ 
 
 const port = process.env.PORT || 3000;
 const app = express();
 
-let userInfo;
-let dataFound;
+ 
 
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
@@ -60,30 +59,7 @@ app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
 
-app.post('/api', (req, res) => {
-  async function sendData() {
-    userInfo = await myData.create({
-      city: req.body.city,
-    });
-  }
-  sendData();
-  res.json({
-    message: "It's perfect, I received all the data",
-  });
-});
-
-app.get('/api', (req, res) => {
-  try { async function search() {
-      dataFound = await myData.find();
-      res.json({
-        dataFound,
-      });
-    }
-    search();
-  } catch (e) {
-    console.log(e);
-  }
-});
+ 
 
 // Route for registering a new user
 app.post('/register', async (req, res) => {
