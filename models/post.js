@@ -28,6 +28,3 @@ const postScheme=new Schema(
 
 const Post=mongoose.model('Post',postScheme);
 module.exports=Post;
-/*
-const user=mongoose.model('user',userScheme);
-module.exports=user;*/
