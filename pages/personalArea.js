@@ -3,7 +3,7 @@ const postContainer = document.getElementById("postContainer");
 // Specify the image URL and the number of copies you want to create
 const imageUrl = "followers.jpg";
 const numCopies = 10;
-fetch('/getPosts').then(data=>console.log(data))
+//fetch('/getPosts').then(data=>console.log(data))
 
 for (let i = 0; i < numCopies; i++) {
   // Create a div element for the post
