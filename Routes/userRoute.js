@@ -1,14 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../Controllers/auth');
-const User = require('../models/user');
-const bcrypt = require('bcrypt');
+const userController = require('../Controllers/userController');
 
-
-
-router.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/login');
-});
+router.post('/register', userController.createUser);
+router.post('/login', authController.login);
 
 module.exports = router;
