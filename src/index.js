@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const myData = require('../pages/template');
+const myData = require('../pages/tempate');
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+var userInfo;
+var dataFound;
 
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
@@ -59,27 +62,25 @@ app.get('/register.css', (req, res) => {
 
 app.post('/api', (req, res) => {
   async function sendData() {
-    console.log('sendData');
-    var userInfo = await myData.create({
-          city: req.body.city
-           
+    userInfo = await myData.create({
+      city: req.body.city
       })
   }
   sendData();
   res.json({
-      message: "It's perfect, I received all the data"
+    message: "It's perfect, I received all the data"
   });
 })
 
 app.get('/api', (req, res) => {
   try {
-      async function search() {
-        var dataFound = await myData.find();
+    async function search() {
+      dataFound = await myData.find();
         res.json({
-              dataFound
-          });
-      }
-      search();
+          dataFound
+        });
+    }
+    search();
   } catch (e) {
       console.log(e)
   }
