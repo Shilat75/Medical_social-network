@@ -84,10 +84,10 @@ app.post('/register', async (req, res) => {
     });
     await user.save();
 
-    return res.redirect('Login.ejs');
+    return res.redirect('/Login');
   } catch (err) {
     console.error(err);
-    return res.redirect('register.ejs');
+    return res.redirect('/register');
   }
 });
 
