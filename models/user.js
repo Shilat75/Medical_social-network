@@ -29,6 +29,3 @@ const userScheme=new Schema(
 
 const User=mongoose.model('User',userScheme);
 module.exports=User;
-/*
-const user=mongoose.model('user',userScheme);
-module.exports=user;*/
