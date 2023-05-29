@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const authRouter = require('../Routes/userRoute');
+const bcrypt = require('bcrypt');
+const User = require('../models/user');
 
 const port = process.env.PORT || 80;
 const app = express();
-// render work
+
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -24,60 +25,77 @@ db.on('error', (err) => {
 db.once('open', () => {
   console.log('Database connection established!');
 });
-
+// Helper function to validate email format
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 app.use(express.static('pages'));
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
   res.render(path.join(__dirname, '../pages/Homepage.ejs'));
 });
-app.get('/HomePage.css', (req, res) => {
-  res.render(path.join(__dirname, '../pages/HomePage.css'));
-});
-app.get('/Login', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Login.ejs'));
-});
-app.get('/Login.css', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Login.css'));
-});
-app.get('/register', (req, res) => {
-  res.render(path.join(__dirname, '../pages/register.ejs'));
-});
-app.get('/register.css', (req, res) => {
-  res.render(path.join(__dirname, '../pages/register.css'));
-});
-app.get('/Register', (req, res) => {
-  if (req.session.username === undefined) {
-    res.sendFile('page/register.html', { root: './' });
-  } else {
-    res.redirect('/Home');
-  }
-});
-// app.post('/', (req, res));
 
-/* app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/Homepage.ejs'));
-});
 app.get('/HomePage.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
 });
+
 app.get('/Login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/Login.ejs'));
+  res.render(path.join(__dirname, '../pages/Login.ejs'));
 });
+
 app.get('/Login.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Login.css'));
 });
+
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/register.ejs'));
+  res.render(path.join(__dirname, '../pages/register.ejs'));
 });
+
 app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
-}); */
-// Add POST route for '/register'
-app.post('/register', (req, res) => {
-  // Handle registration logic here
-  res.send('Registration successful');
+});
+
+// Route for registering a new user
+app.post('/register', async (req, res) => {
+  const { email, username, password } = req.body;
+  const level = 'starter';
+
+  try {
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return res.render('register', { error: 'The email provided is already registered. Please try with a different email.' });
+    }
+
+    if (username.length < 4 || username.length > 20) {
+      return res.render('register', { error: 'Username must have between 4 and 20 characters' });
+    }
+
+    if (!validateEmail(email)) {
+      return res.render('register', { error: 'Invalid email format' });
+    }
+
+    if (password.length < 6 || password.length > 20) {
+      return res.render('register', { error: 'Password must be between 6 and 20 characters long' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({
+      email, password: hashedPassword, username, level,
+    });
+    await user.save();
+
+    return res.redirect('/Login');
+  } catch (err) {
+    console.error(err);
+    return res.redirect('/register');
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
