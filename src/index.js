@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const myData = require("../pages/template");
+const myData = require('../pages/template');
 
 const port = process.env.PORT || 3000;
 const app = express();
