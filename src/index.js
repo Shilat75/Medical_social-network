@@ -56,6 +56,35 @@ app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
 
+app.post("/api", (req, res) => {
+  async function sendData() {
+    console.log('sendData');
+      var userInfo = await myData.create({
+          city: req.body.city
+           
+      })
+  }
+  sendData();
+  res.json({
+      message: "It's perfect, I received all the data"
+  });
+})
+
+app.get("/api", (req, res) => {
+  try {
+      async function search() {
+          var dataFound = await myData.find();
+          res.json({
+              dataFound
+          });
+      }
+      search();
+  } catch (e) {
+      console.log(e)
+  }
+
+})
+
 // Route for registering a new user
 app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;

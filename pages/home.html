@@ -19,19 +19,40 @@
       </nav>
     </header>
     <main>
-      <form id="postForm">
-        <textarea class="text-box" rows="3" cols="50" placeholder="            
-                 Write your post here          "></textarea>
-        <button type="submit">Post</button>
-          <style>
-            .text-box {
-              width: 400px; /* Adjust the width value as per your preference */
-            }
-          </style>
+      <label>City:<input type="text" class="userCity"/></label>
+      <button>Send data</button>
+      <div class="divf" ></div>
+      <script>
 
-      </form>
-      <h2>Welcome to HealthConnect</h2>
-      <p>Empowering your health journey through shared experiences.</p>
+         
+        var myCity=document.querySelector(".userCity");
+        var myDiv=document.querySelector(".divf");
+            
+        button.addEventListener("click",()=>{
+            
+        var obj={
+                city:myCity.value,
+            }
+            fetch("/api",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+
+            },
+            body:JSON.stringify(obj)
+            }).then((r)=>r.json()).then((response)=>console.log(response));
+        
+        })
+
+        fetch("/api").then(r=>r.json()).then(data=>{
+            var dataDisplayed="";
+            for(var a of data.dataFound){
+                dataDisplayed+=`<p>The city is: ${a.city}</p>`;
+            }
+            myDiv.innerHTML+=dataDisplayed;
+        }).catch(e=>console.log(e));
+
+    </script>
     </main>
   </div>
 </body>
