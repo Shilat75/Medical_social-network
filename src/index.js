@@ -31,7 +31,7 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 app.use(express.static('pages'));
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
