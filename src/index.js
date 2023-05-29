@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const myData = require("../pages/template");
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -56,10 +57,10 @@ app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
 
-app.post("/api", (req, res) => {
+app.post('/api', (req, res) => {
   async function sendData() {
     console.log('sendData');
-      var userInfo = await myData.create({
+    var userInfo = await myData.create({
           city: req.body.city
            
       })
@@ -70,11 +71,11 @@ app.post("/api", (req, res) => {
   });
 })
 
-app.get("/api", (req, res) => {
+app.get('/api', (req, res) => {
   try {
       async function search() {
-          var dataFound = await myData.find();
-          res.json({
+        var dataFound = await myData.find();
+        res.json({
               dataFound
           });
       }
