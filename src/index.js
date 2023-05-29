@@ -36,27 +36,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Homepage.ejs'));
+  res.render(path.join(__dirname, '../view/pages/Homepage.ejs'));
 });
 
 app.get('/HomePage.css', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
+  res.sendFile(path.join(__dirname, '../view/pages/HomePage.css'));
 });
 
 app.get('/Login', (req, res) => {
-  res.render(path.join(__dirname, '../pages/Login.ejs'));
+  res.render(path.join(__dirname, '../view/pages/Login.ejs'));
 });
 
 app.get('/Login.css', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/Login.css'));
+  res.sendFile(path.join(__dirname, '../view/pages/Login.css'));
 });
 
 app.get('/register', (req, res) => {
-  res.render(path.join(__dirname, '../pages/register.ejs'));
+  res.render(path.join(__dirname, '../view/pages/register.ejs'));
 });
 
 app.get('/register.css', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/register.css'));
+  res.sendFile(path.join(__dirname, '../view/pages/register.css'));
 });
 
 app.get('/home', (req, res) => {
