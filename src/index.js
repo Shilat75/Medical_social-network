@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const ejs = require('ejs');
-const authRouter = require('../Controllers/auth');
+const authRouter = require('../Routes/userRoute');
 const User = require('../models/user');
 
 const port = process.env.PORT || 80;
@@ -30,6 +30,9 @@ db.once('open', () => {
 app.use(express.static('pages'));
 app.set('view engine', 'ejs');
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/auth', authRouter);
+
 //app.use('/auth', authRouter);
 
 /* app.get('/auth', (req, res) => {
@@ -55,7 +58,7 @@ app.get('/register.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/register.css'));
 });
 
-app.post('/', (req,res));
+// app.post('/', (req, res));
 
 /* app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.ejs'));
