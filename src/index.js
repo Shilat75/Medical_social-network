@@ -31,11 +31,11 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 app.use(express.static('pages'));
-//app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.post('/', (req,res));
+// app.post('/', (req,res));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
@@ -55,7 +55,6 @@ app.get('/register', (req, res) => {
 app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
 });
- 
 // Route for registering a new user
 app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;
