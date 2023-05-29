@@ -1,6 +1,3 @@
-# project_manag
-https://project-manag-sd.onrender.com/
-# project_manag
 https://project-manag-sd.onrender.com/
 
 # Project Management
