@@ -30,7 +30,7 @@ db.once('open', () => {
 app.use(express.static('pages'));
 app.set('view engine', 'ejs');
 app.use(express.json());
-app.use('/auth', authRouter);
+//app.use('/auth', authRouter);
 
 /* app.get('/auth', (req, res) => {
   res.sendFile(path.join(__dirname, authRouter));
@@ -55,7 +55,7 @@ app.get('/register.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/register.css'));
 });
 
-app.post('/', (req, res));
+app.post('/', (req,res));
 
 /* app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Homepage.ejs'));
