@@ -37,19 +37,19 @@ app.use('/auth', authRouter);
 app.post('/', (req,res));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/Homepage.html'));
+  res.sendFile(path.join(__dirname, '../pages/Homepage.ejs'));
 });
 app.get('/HomePage.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/HomePage.css'));
 });
 app.get('/Login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/Login.html'));
+  res.sendFile(path.join(__dirname, '../pages/Login.ejs'));
 });
 app.get('/Login.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/Login.css'));
 });
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, '../pages/register.html'));
+  res.sendFile(path.join(__dirname, '../pages/register.ejs'));
 });
 app.get('/register.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/register.css'));
