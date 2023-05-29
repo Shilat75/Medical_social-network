@@ -2,20 +2,30 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../Controllers/auth');
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
-//router.post('/signup', authController.signup);
+
+const validateEmail = (email) => {
+    // Regular expression to validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
 router.post('/register', async (req, res) => {
     const { email, username, password } = req.body;
     const level = 'starter';
     console.log(email);
     console.log(username);
     console.log(password);
+    console.log(confirmpassword);
     try {
       const existingUser = await User.findOne({ email });
       if (existingUser) {
         return res.render('register', { error: 'The email provided is already registered. Please try with a different email.' });
       }
-      
+      if (username.length < 4 && username.length > 20) {
+        return res.render('register', { error: 'Username must have at least 4 characters' });
+      }
       if (!validateEmail(email)) {
         return res.render('register', { error: 'Invalid email format' });
       }
@@ -26,16 +36,16 @@ router.post('/register', async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = new User({ email, password: hashedPassword, username, level });
       await user.save();
-      res.redirect('/Login');
+      res.redirect('/login');
     } catch (err) {
       console.error(err);
       res.redirect('/register');
     }
   });
-  router.get('/register', (req, res) => {
-    const message = req.flash('message')[0];
-    res.render('register', { error: '' });
-  });
-router.post('/signin', authController.signin);
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/login');
+});
 
 module.exports = router;

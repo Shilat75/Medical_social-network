@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-//  const authRouter = require('../Routes/userRoute');
+const authRouter = require('../Routes/userRoute');
 
 const port = process.env.PORT || 80;
 const app = express();
@@ -29,7 +29,7 @@ app.use(express.static('pages'));
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//  app.use('/auth', authRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
   res.render(path.join(__dirname, '../pages/Homepage.ejs'));
@@ -49,7 +49,13 @@ app.get('/register', (req, res) => {
 app.get('/register.css', (req, res) => {
   res.render(path.join(__dirname, '../pages/register.css'));
 });
-
+app.get('/Register', (req, res) => {
+  if (req.session.username === undefined) {
+    res.sendFile('page/register.html', { root: './' });
+  } else {
+    res.redirect('/Home');
+  }
+});
 // app.post('/', (req, res));
 
 /* app.get('/', (req, res) => {

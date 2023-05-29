@@ -1,240 +1,274 @@
-
-body {
-  font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
-  background: rgb(245, 198, 228);
-}
-.skew-menu {
-  text-align: center;
-  margin-top: 3em;
-  position:relative;
-  z-index:9999;
-  padding: 22px;
-}
-.skew-menu ul {
-  display: inline-block;
+*{
+    
   margin: 0;
-  padding: 0;
+  padding:0;
   list-style: none;
-  transform: skew(-0deg);
-}
-.skew-menu ul li {
-  background: #fff;
-  float: left;
-  border-right: 1px solid #eee;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-  color: #555;
-  font-weight: 400;
-  transition: all 0.3s linear;
-}
-.skew-menu ul li:first-child {
-  border-radius: 7px 0 0 7px;
-}
-.skew-menu ul li:last-child {
-  border-right: none;
-  border-radius: 0 7px 7px 0;
-}
-.skew-menu ul li:hover {
-  background: #eee;
-  color: tomato;
-}
-.skew-menu ul li a {
-  display: block;
-  padding: 1em 2em;
-  color: inherit;
   text-decoration: none;
-  transform: skew(0deg);
+
+
 }
-.shape:first-child {
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
+.bg-img{
+background: url("Images/20044.jpg") no-repeat center center fixed;
+background-size: cover;
+height: 100vh;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: fixed;
+
 }
-.shape:last-child {
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -80px;
-    bottom: -80px;
+nav{
+background:transparent;
+padding:10px 10px;
+animation: slideIn 2s ease-in-out forwards;
+
+
+
 }
-form {
-    display: inline;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 45%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 30px 40px;
-    margin-top: 100px;
+
+nav ul li{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 50px;
+  display: inline-block;
+  animation-timing-function: ease-in;
+  animation-delay: var(300ms);
+  
 }
-form *{
-    font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.4px;
-    outline: none;
-    border: none;
-    margin: 0 auto;
+nav ul li a{
+color:#d3d3d3;
 }
-form h3 {
-    font-size: 32px;
-    font-weight: 530;
-    line-height: 42px;
-    text-align: center;
+.loginbox{
+
+  width:25vw;
+  height: 370px;;
+  border: solid rgba(252, 255, 232, 0.76) ;
+  position: absolute;
+  top:12%;
+  background: transparent;
+  display: inline-block;
+  margin: 8vh 20vw;
+  box-shadow: 0 0 45px 0 rgb(227, 229, 204);
+  padding:150px 70px;
+  display: flex;
+  animation: slideIn 2s ease-in-out forwards;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
 }
-label {
-    display: block;
-    margin-top: 30px;
-    font-size: 17px;
-    font-weight: 520;
+.loginbox .font{
+text-align:center;
+font-family: 'Montserrat',sans-serif;
+color: #d3d3d3;
+font-size: 1rem;
+animation: text-load 300ms ease-in 600ms;
+animation-timing-function: ease-in ;
+animation-delay: var(300ms);
 }
-input {
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 18px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-    max-width: 150px;                                  
+.loginbox .font h4{
+font-weight: 200px;
+font-size: 25px;
+font-family: 'Montserrat', sans-serif;
+margin:20px 40px;
+top:8%;
+
 }
-::placeholder {
-    color: #e5e5e5;
+
+.textbox{
+margin-bottom:10%;
+margin-left: 25px;
+padding: 5px 10px;
+font-family: 'Montserrat',sans-serif;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: #d3d3d3;
+box-shadow: 0 0 15px 0 rgb(227, 229, 204);
+position: relative;
+
+
+}
+.textbox input[type="text"] {
+width: 100%;
+height: 100%;
+border: none;
+outline: none;
+font-size: 25px;
+background-color: #d3d3d3;
+
+}
+.textbox :hover{
+box-shadow: 0 0 80px 0 #d3d3d3,
+0 0 80px 0 #d3d3d3 , 0 0 90px 0 #d3d3d3 inset;
+background-color: #d3d3d3;
+
+}
+
+.loginbox ul li a{
+display: inline-block;
+margin: 0px 15px;
+font-family: 'Montserrat',sans-serif;
+font-size: 25px;
+
+
+}
+.logo{
+color: #d3d3d3;
+font-family: monospace;
+padding: 10px 10px;
+
 }
 button{
-    font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
-    text-transform: uppercase;
-    margin-top: 50px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #555;
-    padding: 18px 0;
-    font-size: 20px;
-    font-weight: 400;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.social {
-  margin-top: 30px;
-  display: flex;
-}
-.social div {
-  background: red;
   width: 150px;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255,255,255,0.27);
-  color: white;
-  text-align: center;
-}
-.social div:hover {
-  background-color: rgba(255,255,255,0.27);
-}
-.social .fb {
-  margin-left: 25px;
-}
-.social i {
-  margin-right: 4px;
-}
-.error_box {
-text-align:center;
-color:crimson;
-font-size:12px;
-}
-#main_page_content {
-  font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
-  font-size:20px;
-  text-align: left;
-  margin: auto;
-  color: white;
-  width:50%; 
-  padding: 45px;
-  
-}
-.main_content {
-  text-align: center;
-
-}
-.submenu1 {
-  font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.4px;
-    outline: none;
-    border: none;
-    margin: 0 auto;
-    width: 100%;
-    display:inline;
-}
-.opt {
+  height: 50px;
+  padding: 15px 15px;
+  border-radius: 2%;
   background-color: transparent;
+  border: double #d3d3d3 1px;
   cursor: pointer;
+  color: #d3d3d3;
+  font-weight: 200;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 15px 0 white;
+  animation-name: nav-link-load;
+  animation-duration: var(--nav-link-load-time);
+  animation-timing-function: ease-in;
+  animation-delay: var(300ms);
+  animation-fill-mode: forwards;
+  transform: scale(1.1);
+  margin-left: 10px;
+}
+button:hover{
+background-color: #eeeed0;
+color: black;
+}
+.button:active{
+background-color: transparent;
+color: #d3d3d3;
+box-shadow: 0 0 80px 0 #d3d3d3,
+0 0 80px 0 #d3d3d3 , 0 0 90px 0 #d3d3d3 inset;
+
+}
+@keyframes slideIn {
+from {
+transform: translateX(-100%);
+opacity: 0;
+}
+to {
+transform: translateY(0%);
+opacity: 1;
+}
+}
+/* styles for screens smaller than 600px */
+@media (min-width: 500px) {
+body {
+  font-size: 10px;
 }
 
-table {
-  max-width: 100%;
-  border-collapse: collapse;
+h1 {
+  font-size: 1rem;
 }
-tr:nth-child(odd) {
-  background-color: #eee;
-}
-td {
-  text-align: center;
-  padding: 0.5em 1em;
-}
-.postdiv {
   
-    border: 0.5rem outset rgb(240, 13, 153);
-    outline: 0.5rem solid rgb(124, 64, 104);
-    box-shadow: 0 0 0 1rem rgb(177, 96, 209);
-    border-radius: 12px;
-    font: bold 1rem sans-serif;
-    margin: 2rem;
-    padding: 1rem;
-    outline-offset: 0.5rem;
-    background-color: rgb(228, 230, 221);
-    text-align:center;
+.loginbox ul li a{
+    font-size: 35px;
+    padding: 20px 10px;
+    margin:30px;
 }
-button {
-    
-    outline:  0.2rem solid rgb(124, 64, 104);
-    background-color:  rgb(252, 199, 223);
+.textbox input[type="text"] {
+    font-size: 15px;
 }
-input[type=button] {
-    outline:  0.2rem solid rgb(124, 64, 104);
-    background-color:  rgb(252, 199, 223);
-    display: table-cell;
-    margin:10px;
-    width: 100%;
+
+.loginbox{
+    width:550px;
+    height:550px;
+    margin: 150px;
+
 }
-input[type=text] {
-    outline:  0.2rem solid rgb(124, 64, 104);
-    background-color:  rgb(252, 199, 223);
-    display: table-cell;
-    margin:10px;
-    width: 100%;
+.textbox{
+  height:35px;
+  width:250px;
 }
-  input[type=password] {
-    outline:  0.2rem solid rgb(124, 64, 104);
-    background-color:  rgb(252, 199, 223);
-    display: table-cell;
-    margin:10px;
-    width: 100%;
+button{
+  height:50px;
+  width:230px;
 }
-h5 {
-    padding: 10px;
-    margin: auto;
-    outline:  0.2rem solid rgb(124, 64, 104);
-    background-color:  rgb(252, 199, 223);
-    width: 70%;
-    text-align:center;
+
+
+}
+
+@media (min-width: 1200px) {
+body {
+font-size: 10px;
+}
+
+h1 {
+font-size: 1rem;
+}
+
+.loginbox ul li a{
+  font-size: 20px;
+  padding: 20px 10px;;
+}
+.textbox input[type="text"] {
+  font-size: 15px;
+}
+
+.loginbox{
+  width:400px;
+  height: 410px;
+  
+  top:-1.5%;
+  margin-left: 30%;
+  
+
+}
+
+}
+input:required {
+  border: 3px solid red;
+}
+.font h6{
+  margin-right: 200px;
+  color:rgb(210, 73, 73);
+  font-size: 15px;
+}
+form ul li a h5{
+  color:#ccc;
+ 
+}
+
+.textbox.error input[type="text"],
+.textbox.error input[type="password"] {
+border-color: red;
+}
+
+.textbox.error::after {
+content: '';
+position: absolute;
+top: 50%;
+right: 10px;
+transform: translateY(-50%);
+width: 10px;
+height: 10px;
+background-color: red;
+border-radius: 50%;
+background-color: transparent;
+}
+
+.error-message {
+color: red;
+font-size: 0.8rem;
+margin-top: 7px;
+}
+.timezone label{
+  color: #ccc;
+  font-size: 20px;
+
+}
+.timezone select{
+  
+  border:black 2px solid;
+  padding:2px;
+  border-radius: 10%;
+  background-color:#d3d3d3;
 }
