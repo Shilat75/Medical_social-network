@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const myData = require('../pages/tempate');
 
@@ -73,8 +73,7 @@ app.post('/api', (req, res) => {
 })
 
 app.get('/api', (req, res) => {
-  try {
-    async function search() {
+  try { async function search() {
       dataFound = await myData.find();
         res.json({
           dataFound
@@ -84,7 +83,6 @@ app.get('/api', (req, res) => {
   } catch (e) {
       console.log(e)
   }
-
 })
 
 // Route for registering a new user
