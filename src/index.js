@@ -4,7 +4,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 const app = express();
 
 // Connect to MongoDB
@@ -71,16 +71,11 @@ app.post('/register', async (req, res) => {
       return res.render('register', { error: 'The email provided is already registered. Please try with a different email.' });
     }
 
-    if (username.length < 4 || username.length > 20) {
-      return res.render('register', { error: 'Username must have between 4 and 20 characters' });
-    }
-
     if (!validateEmail(email)) {
       return res.render('register', { error: 'Invalid email format' });
     }
-
-    if (password.length < 6 || password.length > 20) {
-      return res.render('register', { error: 'Password must be between 6 and 20 characters long' });
+    if (password.length < 8) {
+      return res.render('register', { error: 'Password must be at least 8 characters long' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -96,6 +91,6 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+// });
