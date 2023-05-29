@@ -1,14 +1,13 @@
 const post = require('../models/post');
-/*
-exports.signup = (req, res) => {
+
+exports.postA = (req, res) => {
     // try
     const p = new post({
       postname: 'Tair Mazuz55',
       likes: 9,
       data: 'more about my new blog',
       uploadDate: 2022-12-01
-      comments: Array
     });
   
     p.save()
-};*/
+};
