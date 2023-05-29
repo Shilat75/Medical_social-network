@@ -4,7 +4,7 @@ const path = require('path');
 const authRouter = require('./../Controllers/auth');
 const User = require('../models/user');
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 4000;
 const app = express();
 
 // Connect to MongoDB
