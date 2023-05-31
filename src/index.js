@@ -67,12 +67,12 @@ app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;
 
   try {
-    const newUser = await User.create({
-      email,
-      username,
-      password,
-      level: 'starter',
-    });
+    // const newUser = await User.create({
+    //   email,
+    //   username,
+    //   password,
+    //   level: 'starter',
+    // });
 
   //  res.status(201).json({ success: true, data: newUser });
     res.redirect('/Login');
