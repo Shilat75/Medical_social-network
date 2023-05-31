@@ -78,8 +78,8 @@ app.post('/register', async (req, res) => {
       res.redirect('/Login');
     } 
   } catch (err) {
-    res.redirect('/Register?error=alret(Invalid email address)');
-    //res.status(400).json({ success: false, error: err.message });
+    res.redirect('/Register?error=' + encodeURIComponent(err.message));
+    // res.status(400).json({ success: false, error: err.message });
   }
 });
 // Set up the route for the login page
