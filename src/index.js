@@ -8,7 +8,6 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 
-
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -80,6 +79,7 @@ app.post('/register', async (req, res) => {
     });
 
     res.status(201).json({ success: true, data: newUser });
+    res.redirect('/Login')
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
   }
