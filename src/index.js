@@ -78,7 +78,7 @@ app.post('/register', async (req, res) => {
       res.redirect('/Login');
     } 
   } catch (err) {
-    res.redirect('/Register?error=Invalid email address');
+    res.redirect('/Register?error=alret(Invalid email address)');
     //res.status(400).json({ success: false, error: err.message });
   }
 });
