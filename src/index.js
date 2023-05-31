@@ -66,6 +66,7 @@ app.get('/personalArea.css', (req, res) => {
 // Route for registering a new user
 app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;
+  let errorMessage = '';
 
   try {
     if (validatePassword(password) && validateEmail(email)) {
@@ -76,6 +77,14 @@ app.post('/register', async (req, res) => {
         level: 'starter',
       });
       res.redirect('/Login');
+    } else {
+      if (!validatePassword(password)) {
+        errorMessage = 'Password must be at least 8 characters long';
+      } else if (!validateEmail(email)) {
+        errorMessage = 'Please enter a valid email address';
+      }
+
+      res.render('register', { errorMessage });
     }
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
