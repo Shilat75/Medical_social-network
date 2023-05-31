@@ -87,7 +87,6 @@ app.post('/register', async (req, res) => {
 // Set up the route for the login page
 app.post('/Login', (req, res) => {
   const { username, password } = req.body;
-
   // Check if the username and password exist in the database
   User.findOne({ username, password }, (err, user) => {
     if (err) {
