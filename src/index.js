@@ -9,7 +9,7 @@ const app = express();
 
 
 // Connect to MongoDB
-const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
+const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/test';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -83,6 +83,23 @@ app.post('/register', async (req, res) => {
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
   }
+});
+// Set up the route for the login page
+app.post('/Login', (req, res) => {
+  const { username, password } = req.body;
+  // Check if the username and password exist in the database
+  User.findOne({ username, password }, (err, user) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('User Doesnt Exist In The System!');
+    } else if (user) {
+      // Redirect to the home page
+      res.redirect('/home');
+    } else {
+      // Show an error message
+      res.send('Invalid username or password');
+    }
+  });
 });
 
 module.exports = app;
