@@ -3,10 +3,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 const User = require('../models/user');
 
-
 const port = process.env.PORT || 3000;
 const app = express();
-
 
 // Connect to MongoDB
 const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
@@ -59,9 +57,7 @@ app.get('/register.css', (req, res) => {
 
 app.get('/personalArea', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/personalArea.html'));
- 
 });
-
 
 app.get('/personalArea.css', (req, res) => {
   res.sendFile(path.join(__dirname, '../pages/personalArea.css'));
@@ -78,8 +74,8 @@ app.post('/register', async (req, res) => {
       level: 'starter',
     });
 
-    // res.status(201).json({ success: true, data: newUser });
-    res.redirect('/Login')
+  //  res.status(201).json({ success: true, data: newUser });
+    res.redirect('/Login');
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
   }
