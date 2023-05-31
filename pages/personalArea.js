@@ -19,7 +19,7 @@ const imageUrl = "followers.jpg";
 const numCopies = 10;
 
 for (let i = 0; i < numCopies; i++) {
-// Create a div element for the post
+// Create a div element for the postt
 const postElement = document.createElement("div");
 postElement.classList.add("post");
 
