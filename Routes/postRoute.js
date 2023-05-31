@@ -1,21 +1,10 @@
-/*const express = require('express');
+const express = require('express');
 const router = express.Router();
+const userController = require('../Controllers/postController');
 
-const posts = require('../models/post');
-const { log } = require('console');
-console.log("Hey to nene")
-//router.post('/register', userController.createUser);
-//router.post('/login', authController.login);
+
+
+router.post('/register', postController.createPost);
+ 
 
 module.exports = router;
-
-app.get("/users", async (request, response) => {
-    const listOfPost = await posts.find({});
-  console.log(listOfPosts)
-    try {
-      response.send(users);
-    } catch (error) {
-      response.status(500).send(error);
-    }
-  });
-  */

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const User = require('../models/user');
+const Post = require('../models/post');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -96,6 +97,24 @@ app.post('/Login', (req, res) => {
       res.send('Invalid username or password');
     }
   });
+});
+// new post 
+app.post('/home', async (req, res) => {
+  const { postname, likes, data , uploadDate , comments } = req.body;
+  
+  try {
+    const newPost = await Post.create({
+      postname,
+      likes ,
+      data,
+      uploadDate,
+      comments, 
+    });
+
+    res.status(201).json({ success: true, data: newPost });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
 });
 
 module.exports = app;
