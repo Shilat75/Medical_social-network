@@ -5,6 +5,7 @@
 
   <title>HealthConnect</title>
   <link rel="stylesheet" type="text/css" href="home.css">
+  <script src="home.js"></script>
 </head>
 <body>
   <div class="container">
@@ -29,7 +30,7 @@
     </header>
     <main>
       
-      <form id="postForm">
+      <form id="postForm" action="/home" method="post">
         <textarea class="text-box" rows="2" cols="50" placeholder="            
                  Write your post here          "></textarea>
         
@@ -38,6 +39,7 @@
               width: 400px; /* Adjust the width value as per your preference */
             }
           </style>
+           
 
 <div class="add-post-links">
   <!-- <a href="#"><img src="https://i.postimg.cc/QMD2BDXs/live-video.png">Live Video</a>
