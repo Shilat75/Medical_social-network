@@ -22,7 +22,7 @@ db.on('error', (err) => {
   console.log(err);
 });
 db.once('open', () => {
-  console.log('Database connection established!');
+  console.log('Database connection established!!');
 });
 
 app.use(express.static('pages'));
