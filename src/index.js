@@ -79,7 +79,7 @@ app.post('/register', async (req, res) => {
     } 
   } catch (err) {
     res.redirect('/Register?error=' + encodeURIComponent(err.message));
-    res.status(400).json({ success: false, error: err.message });
+    //res.status(400).json({ success: false, error: err.message });
   }
 });
 // Set up the route for the login page
