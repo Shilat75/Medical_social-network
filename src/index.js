@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const { validateEmail, validatePassword } = require('../pages/register.js');
 const User = require('../models/user');
 
 const port = process.env.PORT || 3000;
@@ -67,15 +68,15 @@ app.post('/register', async (req, res) => {
   const { email, username, password } = req.body;
 
   try {
-    const newUser = await User.create({
-      email,
-      username,
-      password,
-      level: 'starter',
-    });
-
-    res.status(201).json({ success: true, data: newUser });
-    res.redirect('/Login');
+    if (validatePassword(password) && validateEmail(email)) {
+      const newUser = await User.create({
+        email,
+        username,
+        password,
+        level: 'starter',
+      });
+      res.redirect('/Login');
+    }
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
   }
