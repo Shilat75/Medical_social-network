@@ -75,7 +75,9 @@ app.post('/register', async (req, res) => {
         password,
         level: 'starter',
       });
+      newUser.save()
       res.redirect('/Login');
+      
     } 
   } catch (err) {
     res.redirect('/Register?error=' + encodeURIComponent(err.message));
