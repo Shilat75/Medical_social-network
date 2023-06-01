@@ -1,3 +1,13 @@
+// Get the sign up and sign in forms
+const  data = document.getElementById('data_post');
+const submit = document.getElementById('submitBtn');
+
+// Function to validate password length
+function validatePassword(data) {
+  return data.length >= 1;
+}
+
+
 function addPost(event) {
     event.preventDefault();
     console.log('add post');

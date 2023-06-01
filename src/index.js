@@ -110,7 +110,7 @@ app.post('/home', async (req, res) => {
       uploadDate,
       comments, 
     });
-
+    newPost.save;
     res.status(201).json({ success: true, data: newPost });
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
