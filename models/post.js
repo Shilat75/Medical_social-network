@@ -3,13 +3,10 @@ const Schema=mongoose.Schema;
 
 const postScheme=new Schema(
     {
-    postname:{ 
-        type:String,
-        required:true
-    },
+  
     likes: {
-        type: Number,
-        default: 0,
+        type: Array,
+        default: [],
       },
     data:{ 
         type:String,
@@ -22,6 +19,10 @@ const postScheme=new Schema(
     comments: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment',
+      },
+      userId:{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
       },
 
 },{timestamps:true});

@@ -75,7 +75,7 @@ app.post('/register', async (req, res) => {
       level: 'starter',
     });
 
-    res.status(201).json({ success: true, data: newUser });
+    //res.status(201).json({ success: true, data: newUser });
     res.redirect('/Login');
   } catch (err) {
     res.status(400).json({ success: false, error: err.message });
@@ -101,7 +101,7 @@ app.post('/Login', (req, res) => {
 // new post 
 app.post('/home', async (req, res) => {
   const { postname, likes, data , uploadDate , comments } = req.body;
-
+  
   try {
     const newPost = await Post.create({
       postname,

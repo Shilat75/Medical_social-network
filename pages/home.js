@@ -6,8 +6,6 @@ const submit = document.getElementById('submitBtn');
 function validatePassword(data) {
   return data.length >= 1;
 }
-
-
 function addPost(event) {
     event.preventDefault();
     console.log('add post');
