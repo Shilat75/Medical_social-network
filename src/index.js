@@ -78,24 +78,24 @@ app.post('/register', async (req, res) => {
       res.redirect('/Login');
     } 
   } catch (err) {
+    res.status(400).send({ error: err.message });
     res.redirect('/Register?error=' + encodeURIComponent(err.message));
     //res.status(400).json({ success: false, error: err.message });
   }
 });
-// Set up the route for the login page
 app.post('/Login', (req, res) => {
   const { username, password } = req.body;
   // Check if the username and password exist in the database
   User.findOne({ username, password }, (err, user) => {
     if (err) {
       console.error(err);
-      res.status(500).send('User Doesnt Exist In The System!');
+      res.status(500).send('An error occurred');
     } else if (user) {
       // Redirect to the home page
       res.redirect('/home');
     } else {
-      // Show an error message
-      res.send('Invalid username or password');
+      // Show an error message on the browser
+      res.status(401).send({ errorMessage: 'Invalid username or password' });
     }
   });
 });

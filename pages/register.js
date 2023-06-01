@@ -28,6 +28,29 @@ function showError(inputElement, errorMessage) {
   errorSpan.style.display = errorMessage ? 'block' : 'none';
 }
 
+document.querySelector('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  const response = await fetch('/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, username, password })
+  });
+
+  if (response.ok) {
+    // If registration is successful, redirect to the login page
+    window.location.href = '/Login';
+  } else {
+    const { error } = await response.json();
+    // Display the error message to the user
+    const errorMessageElement = document.getElementById('error-message');
+    errorMessageElement.textContent = error;
+  }
+});
+
 //showError(emailInput, 'Invalid email format');
 
 //var loginForm = document.getElementById('login-form');
