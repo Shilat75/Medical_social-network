@@ -24,6 +24,9 @@ nav{
 
 
 }
+.error-message {
+  color: red;
+}
 
 nav ul li{
         font-family: 'Montserrat', sans-serif;

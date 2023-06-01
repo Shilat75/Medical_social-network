@@ -272,3 +272,6 @@ margin-top: 7px;
   border-radius: 10%;
   background-color:#d3d3d3;
 }
+.error-message {
+  color: red;
+}
