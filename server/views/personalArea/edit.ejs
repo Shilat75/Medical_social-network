@@ -1,0 +1,136 @@
+<button
+  type="button"
+  class="btn btn-primary edit-profile-btn"
+  data-bs-toggle="modal"
+  data-bs-target="#thisModal"
+>
+  Edit Profile
+</button>
+
+<div
+  class="modal fade"
+  id="thisModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <form id="edit-profile" action="/update/profile" method="POST">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          Update User
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="form-group row p-1">
+          <label for="username-input" class="col-4 col-form-label">User Name</label>
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              id="username-input"
+              name="username"
+              value="<%= req.session.user.username %>"
+              placeholder="Enter Username"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-group row p-1">
+          <label for="email-input" class="col-4 col-form-label">Email</label>
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              id="email-input"
+              name="email"
+              value="<%= req.session.user.email %>"
+              placeholder="Enter Email"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-group row p-1">
+          <label for="password-input" class="col-4 col-form-label">Password</label>
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              id="password-input"
+              name="password"
+              value="<%= req.session.user.password %>"
+              placeholder="Enter Password"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-group row p-1">
+          <label for="name-input" class="col-4 col-form-label">Full Name</label>
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              id="name-input"
+              name="name"
+              value="<%= req.session.user.name %>"
+              placeholder="Enter name"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-group row p-1">
+          <label for="address-input" class="col-4 col-form-label">Address</label>
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              id="address-input"
+              name="address"
+              value="<%= req.session.user.address %>"
+              placeholder="Enter address"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-group row p-1">
+          <label for="phone-input" class="col-4 col-form-label">Mobile Number</label>
+          <div class="col-8">
+            <input
+              type="text"
+              class="form-control"
+              id="phone-input"
+              name="phone"
+              value="<%= req.session.user.phone %>"
+              placeholder="Enter phone"
+              required
+            />
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="col-1"></div>
+          <button type="submit" class="btn btn-success col-4 m-3">
+            Update
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger col-4 m-3"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

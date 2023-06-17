@@ -1,0 +1,60 @@
+<main>
+  <div class="bg-img">
+    <nav>
+      <div class="logo">
+        <span>
+          <h1>Health&nbsp;Connect</h1>
+        </span>
+      </div>
+    </nav>
+    <hr />
+    <div class="loginbox">
+      <div class="font login-form">
+        <h4 class="mt-4">Login</h4>
+        <form id="login-form" action="/login" method="post">
+          <div class="textbox mt-3">
+            <input
+              type="text"
+              id="email-input"
+              name="email"
+              placeholder="Enter Email"
+              value=""
+            />
+          </div>
+          <div class="textbox mt-3">
+            <input
+              type="text"
+              id="password-input"
+              name="password"
+              placeholder="Enter Password"
+              value=""
+            />
+          </div>
+          <span id="error-message" class="error-message">
+            <%= req.session.loginError %>
+          </span>
+
+          <button
+            type="submit"
+            class="mb-3 mt-2"
+            onclick="validate(document.getElementById('email-input').value,document.getElementById('password-input').value,()=>{})"
+          >
+            Submit
+          </button>
+        </form>
+        <a
+          class="col-6 text-nowrap px-3 link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+        >
+          Forgot Password
+        </a>
+        |
+        <a
+          href="/register"
+          class="col-6 px-3 link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+        >
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

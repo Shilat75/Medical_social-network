@@ -1,0 +1,26 @@
+<div class="container">
+  <header>
+    <%- include('../profile/userDetails') %>
+      <form method="post" action="/profile/follow/<%= req.params.userId %>">
+        <input type="hidden" name="userId" value="<%= req.session.userId %>" />
+        <br />
+        <input
+          type="hidden"
+          name="following"
+          value="<%= req.params.userId %>"
+        />
+        <button>Follow</button>
+      </form>
+
+      
+    </div>
+    <%- include('../layout/nav') %>
+  </header>
+</div>
+
+<%- include('./followers') %>
+<hr />
+<%- include('./posts') %>
+
+<hr />
+
