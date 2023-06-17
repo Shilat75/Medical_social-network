@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="card col-10 d-flex justify-content-center my-3">
+    <img
+      src="data:image/png;charset=utf-8;base64,<%= post.image%>"
+      class="card-img-top m-2"
+    />
+    <div class="card-body">
+      <h5 class="card-title border border-primary p-2 rounded-pill">
+        <%= post.title %>
+      </h5>
+      <p class="card-title">
+        <a
+          class="badge bg-light text-dark border"
+          href="/profile/loadUser/<%= user._id %>"
+        >
+        <%= user.username %>
+        </a>
+        <span class="badge bg-light text-dark border">
+          [<%= new Date(post.createdAt).toLocaleString() %>]
+        </span>
+      </p>
+      <p class="card-text"><%= post.data %></p>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>

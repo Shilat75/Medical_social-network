@@ -1,0 +1,35 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (let i=0; i< follows.length; i++ ){ %>
+    <tr>
+      <td><%= follows[i].following.username %></td>
+      <td>
+        <button
+          class="btn btn-warning"
+          onclick="unfollow({_id: '<%= follows[i]._id %>'})"
+        >
+          Unfollow
+        </button>
+      </td>
+    </tr>
+    <%}%>
+  </tbody>
+</table>
+
+<script>
+  function unfollow(follow) {
+    fetch("http://localhost:3456/personalArea/unfollow/" + follow._id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+</script>

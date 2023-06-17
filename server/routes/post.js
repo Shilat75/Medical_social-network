@@ -1,0 +1,83 @@
+var express = require('express');
+const Post = require('../models/post');
+const Like = require('../models/like');
+const Save = require('../models/save');
+const Comment = require('../models/comment');
+const mongoose = require('mongoose');
+const multer = require('multer')
+const uploads = multer({ dest: 'uploads/' })
+const fs = require('fs-extra');
+var router = express.Router();
+
+
+router.post('/add',
+  uploads.single('post-image'),
+  async function (req, res, next) {
+
+    let buffer, base64String = '';
+
+    // Read the uploaded file 
+    if (req.file) {
+      let fileContent = fs.readFileSync(req.file.path);
+
+      // Convert the image to base64
+      buffer = Buffer.from(fileContent);
+      base64String = buffer.toString('base64');
+    }
+
+    // Add the post to the database
+    try {
+      let newPost = await Post.create(Object.assign(req.body, {
+        image: base64String
+      }));
+
+      return res.redirect('/home');
+    } catch (err) {
+      res.status(400).json({ success: false, error: err.message });
+    }
+  });
+
+router.post('/like',
+  async function (req, res, next) {
+
+    // Add the post to the database
+    try {
+      const newLike = await Like.create(req.body);
+      return res.redirect('/home');
+    } catch (err) {
+      res.status(400).json({ success: false, error: err.message });
+    }
+  });
+
+router.post('/save',
+  async function (req, res, next) {
+
+    console.log('post/save');
+    // Add the post to the database
+    try {
+      const newSave = await Save.create(req.body);
+      return res.redirect('/home');
+    } catch (err) {
+      res.status(400).json({ success: false, error: err.message });
+    }
+  });
+
+router.post('/comment',
+  async function (req, res, next) {
+
+    console.log('post/comment');
+    // Add the post to the database
+    try {
+      const newSave = await Comment.create({
+        postId: req.body.commentPostId,
+        comment: req.body.postComment
+      });
+
+      return res.redirect('/home');
+    } catch (err) {
+      res.status(400).json({ success: false, error: err.message });
+    }
+  });
+
+
+module.exports = router;
