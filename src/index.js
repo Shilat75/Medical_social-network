@@ -96,5 +96,4 @@ app.post('/Login', (req, res) => {
     }
   });
 });
-
 module.exports = app;
