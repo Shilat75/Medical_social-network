@@ -100,47 +100,34 @@
           <button type="submit" class="mb-5 mt-3">
             Submit
           </button>
-          <span id="error-message" class="error-message">
-            <%= req.session.loginError %>
-
-          </span>
-
         </form>
       </div>
     </div>
   </div>
 </main>
+<script src="logintest.test.js"></script>
 <script>
-const { validateEmail, validatePassword } = require('./validation.js');
-// Use the functions
-const email = 'test@example.com';
-const password = 'Password123';
-
-console.log(validateEmail(email)); // Output: true
-console.log(validatePassword(password)); // Output: true
-
   function validateForm() {
-  const emailInput = document.getElementById('email-input');
-  const passwordInput = document.getElementById('password-input');
-  const errorMessage = document.getElementById('error-message');
+    const emailInput = document.getElementById('email-input');
+    const passwordInput = document.getElementById('password-input');
+    const errorMessage = document.getElementById('error-message');
 
-  const email = emailInput.value;
-  const password = passwordInput.value;
+    const email = emailInput.value;
+    const password = passwordInput.value;
 
-  if (!validateEmail(email)) {
-    errorMessage.textContent = 'Invalid email address';
-    errorMessage.style.display = 'block';
-    return false;
+    if (!validateEmail(email)) {
+      errorMessage.textContent = 'Invalid email address';
+      errorMessage.style.display = 'block';
+      return false;
+    }
+
+    if (!validatePassword(password)) {
+      errorMessage.textContent =
+        'Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number';
+      errorMessage.style.display = 'block';
+      return false;
+    }
+
+    return true;
   }
-
-  if (!validatePassword(password)) {
-    errorMessage.textContent =
-      'Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number';
-    errorMessage.style.display = 'block';
-    return false;
-  }
-
-  return true;
-}
-
 </script>
