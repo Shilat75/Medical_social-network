@@ -27,7 +27,9 @@ header {
   height: 48px;
 }
 .bg-light-purple {
-  background-color: #DA70D6	; /* Light purple color */
+  box-shadow: 0 1px 3px #f3d8f2, 0 1px 2px #f3d8f2;
+
+  background-color: #9966CC	; /* Light purple color */
 }
 
 
