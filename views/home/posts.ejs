@@ -33,9 +33,17 @@
               class="btn btn-primary p-0"
               data-bs-toggle="modal"
               data-bs-target="#postModal"
+              
               onclick="showPostModal({ postTitle: '<%= posts[i].title %>', postId: '<%= posts[i]._id %>'})"
+              
             >
               Add comment
+              <img
+                  src="/images/comment.png"
+                  width="48px"
+                  class="like-button"
+                  onclick="submit()"
+                />
             </button>
           </div>
           <div class="col-4">
@@ -49,7 +57,7 @@
 
               <span class="position-relative d-inline">
                 <img
-                  src="/images/like.png"
+                  src="/images/like1.png"
                   width="48px"
                   class="like-button"
                   onclick="submit()"
@@ -71,7 +79,7 @@
               <input type="hidden" name="postId" value="<%= posts[i]._id %>" />
               <span class="position-relative d-inline">
                 <img
-                  src="/images/saved.png"
+                  src="/images/save1.png"
                   width="48px"
                   class="like-button"
                   onclick="submit()"
