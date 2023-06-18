@@ -11,20 +11,8 @@ function validateEmail(email) {
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
     return passwordRegex.test(password);
   }
+  module.exports = {
+    validateEmail,
+    validatePassword
+  };
   
-  const password = "MyPassword123!";
-  if (validatePassword(password)) {
-    console.log("Password is valid.");
-  } else {
-    console.log("Password is invalid.");
-    alert("Invalid Password!")
-
-  }
-   const email = "test@example.com";
-   if (validateEmail(email)) {
-     console.log("Email is valid.");
-   } else {
-     console.log("Email is invalid.");
-     alert("Invalid Email!")
-
-   }

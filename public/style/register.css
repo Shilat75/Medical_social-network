@@ -228,5 +228,7 @@ form ul li a h5 {
   background-color: #d3d3d3;
 }
 .error-message {
+  display: none;
   color: red;
+  margin-top: 5px;
 }
