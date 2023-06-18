@@ -102,7 +102,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne<%= i %>">
               <button
-                class="accordion-button collapsed mx-2"
+                class="accordion-button collapsed mx-2 p-0 fs-6"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapse<%= i %>"
@@ -120,13 +120,14 @@
             >
               <div class="accordion-body border-0">
                 <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
-                  <p style="font-size: 12px;"><%= posts[i].comments[cIndex].comment %></p>
+                  <p><%= posts[i].comments[cIndex].comment %></p>
                 <% } %>
               </div>
             </div>
           </div>
         </div>
       <% } // Comments%>
+      
       
       
     </div>
