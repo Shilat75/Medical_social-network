@@ -1,0 +1,31 @@
+<div class="row">
+  <% if (locals.posts){ %> <% for (let i=0; i< posts.length; i++) { %>
+  <div class="col-2"></div>
+  <div class="card col-8 d-flex justify-content-center my-3">
+    <img
+      src="data:image/png;charset=utf-8;base64,<%= posts[i].image%>"
+<<<<<<< HEAD
+      class="card-img-top p-5"
+=======
+      class="card-img-top p-2"
+>>>>>>> a01df2f88b3b05ab71f404575ef310581c3aa26d
+    />
+    <div class="card-body">
+      <h5 class="card-title"><%= posts[i].title %></h5>
+      <p class="card-title">
+        <span class="badge bg-warning text-dark">
+          <a href="/profile/loadUser/<%= posts[i].userId._id %>">
+            <%= posts[i].userId.username %>
+          </a>
+        </span>
+        <span class="badge bg-secondary text-light"
+          >[<%= new Date(posts[i].createdAt).toLocaleString() %>]</span
+        >
+      </p>
+      <p class="card-text"><%= posts[i].data %></p>
+    </div>
+    <hr />
+  </div>
+  <div class="col-2"></div>
+  <% } }%>
+</div>

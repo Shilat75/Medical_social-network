@@ -1,0 +1,8 @@
+<% for (let i=0; i < items.length; i++) { %>
+<br />
+<% for (let user=0; user < items[i].users.length; user++) { %>
+<br />
+<% for (let post=0; post < items[i].posts.length; post++) { %>
+<%- include('post',{post: items[i].posts[post], user: items[i].users[user]}) %>
+
+<% } %> <% } %> <% } %>

@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-end">
+  <div class="user-info">
+    <i class="px-2 fa-solid fa-user"></i>
+    <span><%= req.session.user && req.session.user.username %></span>
+    <a href="/profile/logout">
+      <i class="px-2 fa-solid fa-person-walking-arrow-right"></i>
+    </a>
+  </div>
+</div>
