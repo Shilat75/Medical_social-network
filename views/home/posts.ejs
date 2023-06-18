@@ -10,7 +10,7 @@
         alt="Post Image"
       />
       <div class="card-body">
-        <h5 class="card-title border-bottom border-primary p-2 text-white">
+        <h5 class="card-title border-bottom border-primary p-2 ">
           <%= posts[i].title %>
         </h5>
         <p class="card-text">
@@ -30,7 +30,7 @@
           <div class="col-8">
             <button
               type="button"
-              class="btn btn-primary p-0 bg-transparent"
+              class="btn btn-primary p-0 bg-transparent border-0"
               data-bs-toggle="modal"
               data-bs-target="#postModal"
               onclick="showPostModal({ postTitle: '<%= posts[i].title %>', postId: '<%= posts[i]._id %>' })"
@@ -102,6 +102,7 @@
                 data-bs-target="#collapse<%= i %>"
                 aria-expanded="true"
                 aria-controls="collapse<%= i %>"
+                style="width: 100px; height: 30px;"
               >
                 Show comments
               </button>
@@ -112,7 +113,7 @@
               aria-labelledby="headingOne<%= i %>"
               data-bs-parent="#accordionExample<%= i %>"
             >
-              <div class="accordion-body border-0" style="max-height: 200px; overflow-y: auto;">
+              <div class="accordion-body border-0" style="max-height: 100px; overflow-y: auto;">
                 <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
                   <p><%= posts[i].comments[cIndex].comment %></p>
                 <% } %>
@@ -120,12 +121,8 @@
             </div>
           </div>
         </div>
-        
-    </div>
-    <div class="col-1"></div>
-  </div>
-<% }
-} %>
+      <% } %>
+      
 
 <!-- Modal -->
 <div
