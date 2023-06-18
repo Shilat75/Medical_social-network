@@ -801,7 +801,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #000000;
+  color:#d3d3d3;
   /* Set the color to black */
   text-decoration: none;
   font-size: 20px;
@@ -810,9 +810,9 @@ nav ul li a {
 }
 
 nav ul li a img {
-  width: 80px;
+  width: 50px;
   /* Adjust the width of the icon */
-  height: 80px;
+  height: 50px;
   /* Adjust the height of the icon */
   margin-bottom: -20px;
 
@@ -825,6 +825,3 @@ nav ul li a span {
   /* Adjust the spacing between the icon and the text */
 }
 
-.navbar .navbar-nav .nav-link {
-  color: white;
-}
