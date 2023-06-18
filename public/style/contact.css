@@ -58,6 +58,6 @@ body {
   margin-right: 10px;
 }
 
-ul li {
+ul li a {
   color: #fff; /* Set text color of ul li to white */
 }
