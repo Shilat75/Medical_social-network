@@ -2,8 +2,8 @@
 var mongoose = require('mongoose');
 
 // Connect to MongoDB
-//const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
-const dbURI = 'mongodb://127.0.0.1:27017/myapp';
+const dbURI = 'mongodb+srv://tairmazuz19:0532217639@nosecl.evkn28f.mongodb.net/';
+//const dbURI = 'mongodb://127.0.0.1:27017/myapp';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
