@@ -8,6 +8,23 @@
     <li class="nav-item" role="presentation">
       <a
         class="nav-link active"
+<<<<<<< HEAD
+=======
+        id="myPosts-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#myPosts"
+        type="button"
+        role="tab"
+        aria-controls="like"
+        aria-selected="true"
+        >My Posts
+        <span class="badge bg-success text-dark"> <%= myPosts.length %> </span>
+      </a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+>>>>>>> a01df2f88b3b05ab71f404575ef310581c3aa26d
         id="like-tab"
         data-bs-toggle="tab"
         data-bs-target="#like"
@@ -68,7 +85,14 @@
   </ul>
 
   <div class="row tab-content w-100" id="myTabContent">
+<<<<<<< HEAD
     <div class="tab-pane fade show active" id="like" role="tabpanel">
+=======
+    <div class="tab-pane fade show active" id="myPosts" role="tabpanel">
+      <%- include('../home/posts', {posts:myPosts, deletePost: true}) %>
+    </div>
+    <div class="tab-pane fade" id="like" role="tabpanel">
+>>>>>>> a01df2f88b3b05ab71f404575ef310581c3aa26d
       <%- include('./like', {items:likes}) %>
     </div>
     <div class="tab-pane fade" id="saved" role="tabpanel">

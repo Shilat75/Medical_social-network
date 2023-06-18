@@ -62,6 +62,15 @@ router.post('/save',
     }
   });
 
+router.get('/delete/:postId',
+  async function (req, res, next) {
+
+    console.log(`post/delete [${req.params.postId}]`);
+    await Post.findByIdAndDelete({ _id: req.params.postId});
+    return res.redirect('/personalArea/view');
+    
+  });
+
 router.post('/comment',
   async function (req, res, next) {
 

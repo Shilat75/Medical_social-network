@@ -3,8 +3,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #121212; /* Set a dark background color */
-  color: #fff; /* Set text color to white */
+  background-image: url(/images/rekaH.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
@@ -12,24 +13,11 @@ body {
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  /* Center align the content */
 }
-
 
 header {
   padding-bottom: 20px;
-}
-.btn-image {
-  background: url("/images/upload.png") no-repeat;
-  background-size: cover;
-  border: none;
-  padding: 0;
-  width: 48px; /* Adjust the width and height as needed */
-  height: 48px;
-}
-.bg-light-purple {
-  box-shadow: 0 1px 3px #f3d8f2, 0 1px 2px #f3d8f2;
-
-  background-color: #9966CC	; /* Light purple color */
 }
 
 
@@ -44,7 +32,7 @@ h1 {
 }
 
 h2 {
-  color: #ffffff;
+  color: #333333;
   font-size: 28px;
 }
 
@@ -74,66 +62,7 @@ p {
   top: 0;
   right: 0;
 }
-.card {
-  background-color: rgba(0, 0, 0, 0.12);
-  border: none;
-  border-radius: 2%;
-  box-shadow: 0 1px 3px #DA70D6, 0 1px 2px rgba(0, 0, 0, 0.24);
-}
 
-.card-header {
-  padding: 8px 16px;
-}
-
-.card-body {
-  padding: 16px;
-}
-
-.card-title {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.card-text {
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-
-.card-footer {
-  padding: 8px 16px;
-}
-
-.card-footer .collapse {
-  padding-top: 8px;
-}
-
-.card-footer .collapse .d-flex:not(:last-child) {
-  margin-bottom: 8px;
-}
-
-.card-footer .comment-content {
-  margin-top: 8px;
-}
-.btn {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-}
-
-.btn i {
-  margin-right: 0.25rem;
-}
-
-.btn-outline-light {
-  color: #fff;
-  border-color: #fff;
-}
-
-.btn-outline-light:hover {
-  background-color: #fff;
-  color: #121212;
-}
 
 .left-sidebar {
   flex-basis: 25%;
@@ -179,7 +108,6 @@ color: #626262;
   border-radius: 4px;
   margin-right: 15px;
 }
-
 .shortcut-link p {
   margin: 25px 0;
   color: #626262;
@@ -627,9 +555,6 @@ color: #626262;
   bottom: 0;
   left: 0;
 }
-ul li{
-  color: #d3d3d3;
-}
 /*----------------- Media Query For Home Page -----------------*/
 
 @media (max-width: 900px) {
@@ -814,7 +739,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color:#d3d3d3;
+  color: #000000;
   /* Set the color to black */
   text-decoration: none;
   font-size: 20px;
@@ -823,9 +748,9 @@ nav ul li a {
 }
 
 nav ul li a img {
-  width: 50px;
+  width: 80px;
   /* Adjust the width of the icon */
-  height: 50px;
+  height: 80px;
   /* Adjust the height of the icon */
   margin-bottom: -20px;
 

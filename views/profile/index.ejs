@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
   <header>
     <%- include('../profile/userDetails') %>
       <form method="post" action="/profile/follow/<%= req.params.userId %>">
@@ -24,3 +25,19 @@
 
 <hr />
 
+=======
+  <%- include('../layout/nav') %>
+  <br />
+  <%- include('../profile/userDetails') %>
+  <form method="post" action="/profile/follow/<%= req.params.userId %>">
+    <input type="hidden" name="userId" value="<%= req.session.userId %>" />
+    <br />
+    <input type="hidden" name="following" value="<%= req.params.userId %>" />
+    <button>Follow</button>
+  </form>
+  <hr />
+  <%- include('./followers') %>
+  <hr />
+  <%- include('./posts') %>
+</div>
+>>>>>>> a01df2f88b3b05ab71f404575ef310581c3aa26d

@@ -17,7 +17,7 @@
     <div class="loginbox">
       <div class="font">
         <h4>Sign-Up</h4>
-        <form id="login-form" action="/register" method="POST" onsubmit="return validateForm()">
+        <form id="login-form" action="/register" method="POST">
           <div class="row mb-3">
             <div class="col-1">*</div>
             <div class="col-10">
@@ -96,10 +96,7 @@
               />
             </div>
           </div>
-          <span id="error-message" class="error-message">
-            <%= req.session.registerError %>
-
-          </span>
+          <span id="error-message" class="error-message"></span>
           <button type="submit" class="mb-5 mt-3">
             Submit
           </button>
