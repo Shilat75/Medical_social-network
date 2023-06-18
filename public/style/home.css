@@ -555,6 +555,9 @@ color: #626262;
   bottom: 0;
   left: 0;
 }
+ul li{
+  color: #d3d3d3;
+}
 /*----------------- Media Query For Home Page -----------------*/
 
 @media (max-width: 900px) {
