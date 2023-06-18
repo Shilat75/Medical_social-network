@@ -7,13 +7,12 @@ body {
 }
 
 .container {
-  max-width: 1000px; /* Increase the max-width value */
+  max-width: 1200px; /* Increase the max-width value */
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px; /* Increase the padding value for more height */
   background-color: #333;
   color: #fff;
 }
-
 
 .page-title {
   font-size: 24px;
@@ -35,7 +34,7 @@ body {
 .contact-option {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .contact-link {
@@ -43,11 +42,6 @@ body {
   align-items: center;
   text-decoration: none;
   color: #fff;
-  transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-  color: #00bcd4; /* Change color on hover */
 }
 
 .contact-icon {
@@ -62,4 +56,8 @@ body {
 .contact-option img {
   width: 30px;
   margin-right: 10px;
+}
+
+ul li {
+  color: #fff; /* Set text color of ul li to white */
 }
