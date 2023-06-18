@@ -100,7 +100,10 @@
           <button type="submit" class="mb-5 mt-3">
             Submit
           </button>
-          <span id="error-message" class="error-message"></span>
+          <span id="error-message" class="error-message">
+            <%= req.session.loginError %>
+
+          </span>
 
         </form>
       </div>
