@@ -1,32 +1,70 @@
 <nav>
   <div class="logo">
-    <h1 style="font-size: 18px; font-weight: lighter;">Health&nbsp;Connect</h1>
-    <br />
-    <ul>
-      <li>
-        <a href="/home">
-          <img src="/images/icons8-home-50.png" alt="Home" />
-          <span style="font-size: 14px; font-weight: lighter;">Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="/contact">
-          <img src="/images/icons8-contact-us-50.png" alt="Contact" />
-          <span style="font-size: 14px; font-weight: lighter;">Contact</span>
-        </a>
-      </li>
-      <li>
-        <a href="/aboutUs">
-          <img src="/images/icons8-about-us-50.png" alt="About Us" />
-          <span style="font-size: 14px; font-weight: lighter;">About&nbsp;the&nbsp;Site</span>
-        </a>
-      </li>
-      <li>
-        <a href="/personalArea/view">
-          <img src="/images/icons8-user-default-50.png" alt="Profile" />
-          <span style="font-size: 14px; font-weight: lighter;">Personal&nbsp;Profile</span>
-        </a>
-      </li>
-    </ul>
+    <h1 style="font-size: 18px; font-weight: lighter;">Health Connect</h1>
   </div>
+  <ul class="navigation">
+    <li>
+      <a href="/home">
+        <img src="/images/icons8-home-50.png" alt="Home" />
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="/contact">
+        <img src="/images/icons8-contact-us-50.png" alt="Contact" />
+        <span>Contact</span>
+      </a>
+    </li>
+    <li>
+      <a href="/aboutUs">
+        <img src="/images/icons8-about-us-50.png" alt="About Us" />
+        <span>About the Site</span>
+      </a>
+    </li>
+    <li>
+      <a href="/personalArea/view">
+        <img src="/images/icons8-user-default-50.png" alt="Profile" />
+        <span>Personal Profile</span>
+      </a>
+    </li>
+  </ul>
 </nav>
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 18px;
+    font-weight: lighter;
+  }
+
+  ul.navigation {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.navigation li {
+    margin-left: 10px;
+  }
+
+  ul.navigation li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #555555;
+    font-size: 14px;
+    font-weight: lighter;
+  }
+
+  ul.navigation li a span {
+    margin-top: 5px;
+  }
+</style>
