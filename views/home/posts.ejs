@@ -120,13 +120,14 @@
             >
               <div class="accordion-body border-0">
                 <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
-                  <p class="small"><%= posts[i].comments[cIndex].comment %></p>
+                  <p style="font-size: 12px;"><%= posts[i].comments[cIndex].comment %></p>
                 <% } %>
               </div>
             </div>
           </div>
         </div>
       <% } // Comments%>
+      
       
     </div>
     <div class="col-1"></div>
