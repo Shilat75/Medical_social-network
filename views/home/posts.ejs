@@ -1,4 +1,3 @@
-
 <% if (locals.posts) {
   for (let i = 0; i < posts.length; i++) {
 %>
@@ -9,7 +8,7 @@
         src="data:image/png;charset=utf-8;base64,<%= posts[i].image%>"
         class="card-img-top m-2"
       />
-      <div class="card-body">
+      <div class="card-body bg-dark text-light"> <!-- Updated: Added bg-dark and text-light classes -->
         <h5 class="card-title border border-primary p-2 rounded-pill">
           <%= posts[i].title %>
         </h5>
@@ -29,22 +28,21 @@
         <div class="row">
           <div class="col-8">
             <button
-            type="button"
-            class="btn btn-primary p-0 bg-transparent"
-            data-bs-toggle="modal"
-            data-bs-target="#postModal"
-            onclick="showPostModal({ postTitle: '<%= posts[i].title %>', postId: '<%= posts[i]._id %>' })"
-            style="border: none; display: flex; flex-direction: column; align-items: center; box-shadow: none;"
+              type="button"
+              class="btn btn-primary p-0 bg-transparent"
+              data-bs-toggle="modal"
+              data-bs-target="#postModal"
+              onclick="showPostModal({ postTitle: '<%= posts[i].title %>', postId: '<%= posts[i]._id %>' })"
+              style="border: none; display: flex; flex-direction: column; align-items: center; box-shadow: none;"
             >
-            <img
-              src="/images/comment.png"
-              width="48px"
-              class="like-button"
-              onclick="submit()"
-            />
-            <span style="margin-top: 5px;">Add comment</span>
-          </button>
-          
+              <img
+                src="/images/comment.png"
+                width="48px"
+                class="like-button"
+                onclick="submit()"
+              />
+              <span style="margin-top: 5px;">Add comment</span>
+            </button>
           </div>
           <div class="col-4">
             <form class="m-1 d-inline" action="/post/like" method="post">
@@ -94,44 +92,40 @@
             </form>
           </div>
         </div>
-      </div>
-      <hr />
-      <% if (posts[i].comments && posts[i].comments.length > 0) { %>
-        <!-- -->
-        <div class="accordion mx-5" id="accordionExample<%= i %>">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne<%= i %>">
-              <button
-                class="accordion-button collapsed mx-2 p-0 fs-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapse<%= i %>"
-                aria-expanded="true"
-                aria-controls="collapse<%= i %>"
-                style="font-size: 12px; padding: 0.25rem 0.5rem;"
-
+        <hr />
+        <% if (posts[i].comments && posts[i].comments.length > 0) { %>
+          <!-- -->
+          <div class="accordion mx-5" id="accordionExample<%= i %>">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne<%= i %>">
+                <button
+                  class="accordion-button collapsed mx-2 p-0 fs-6"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse<%= i %>"
+                  aria-expanded="true"
+                  aria-controls="collapse<%= i %>"
+                  style="font-size: 12px; padding: 0.25rem 0.5rem;"
+                >
+                  Show comments
+                </button>
+              </h2>
+              <div
+                id="collapse<%= i %>"
+                class="accordion-collapse collapse border-0"
+                aria-labelledby="headingOne<%= i %>"
+                data-bs-parent="#accordionExample<%= i %>"
               >
-                Show comments
-              </button>
-            </h2>
-            <div
-              id="collapse<%= i %>"
-              class="accordion-collapse collapse border-0"
-              aria-labelledby="headingOne<%= i %>"
-              data-bs-parent="#accordionExample<%= i %>"
-            >
-              <div class="accordion-body border-0">
-                <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
-                  <p><%= posts[i].comments[cIndex].comment %></p>
-                <% } %>
+                <div class="accordion-body border-0">
+                  <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
+                    <p><%= posts[i].comments[cIndex].comment %></p>
+                  <% } %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% } // Comments%>
-      
-      
-      
+        <% } // Comments%>
+      </div>
     </div>
     <div class="col-1"></div>
   </div>
@@ -183,7 +177,6 @@
           <button
             type="button"
             class="btn btn-success w-auto m-2 p-1"
-            
             onclick="submit()"
           >
             Save changes
