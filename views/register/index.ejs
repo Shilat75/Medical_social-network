@@ -96,7 +96,10 @@
               />
             </div>
           </div>
-          <span id="error-message" class="error-message"></span>
+          <span id="error-message" class="error-message">
+            <%= req.session.registerError %>
+
+          </span>
           <button type="submit" class="mb-5 mt-3">
             Submit
           </button>
@@ -105,29 +108,3 @@
     </div>
   </div>
 </main>
-<script src="logintest.test.js"></script>
-<script>
-  function validateForm() {
-    const emailInput = document.getElementById('email-input');
-    const passwordInput = document.getElementById('password-input');
-    const errorMessage = document.getElementById('error-message');
-
-    const email = emailInput.value;
-    const password = passwordInput.value;
-
-    if (!validateEmail(email)) {
-      errorMessage.textContent = 'Invalid email address';
-      errorMessage.style.display = 'block';
-      return false;
-    }
-
-    if (!validatePassword(password)) {
-      errorMessage.textContent =
-        'Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number';
-      errorMessage.style.display = 'block';
-      return false;
-    }
-
-    return true;
-  }
-</script>

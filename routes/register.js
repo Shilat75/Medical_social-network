@@ -1,6 +1,7 @@
 var express = require('express');
 const User = require('../models/user');
 const mongoose = require('mongoose');
+const { validateEmail, validatePassword } = require('../tests/logintest.test');
 var router = express.Router();
 
 /* GET handler */
@@ -29,7 +30,10 @@ router.post('/', async function (req, res, next) {
           level: 'starter',
         }));
     }
+    if(!validateEmail(req.body.email) || !validatePassword(req.body.password)){
+      req.session.registerError = 'Invalid email or password';
 
+    }
     res.redirect('login');
   } catch (err) {
     console.log(err);
