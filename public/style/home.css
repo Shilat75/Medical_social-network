@@ -19,7 +19,7 @@ header {
   padding-bottom: 20px;
 }
 .btn-image {
-  background: url("/images/icons8-upload-to-the-cloud-50.png") no-repeat;
+  background: url("/images/upload.png") no-repeat;
   background-size: cover;
   border: none;
   padding: 0;
