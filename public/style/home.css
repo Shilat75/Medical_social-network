@@ -18,6 +18,14 @@ body {
 header {
   padding-bottom: 20px;
 }
+.btn-image {
+  background: url("/images/icons8-upload-to-the-cloud-50.png") no-repeat;
+  background-size: cover;
+  border: none;
+  padding: 0;
+  width: 48px; /* Adjust the width and height as needed */
+  height: 48px;
+}
 
 
 main {
