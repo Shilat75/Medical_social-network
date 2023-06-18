@@ -112,7 +112,7 @@
               aria-labelledby="headingOne<%= i %>"
               data-bs-parent="#accordionExample<%= i %>"
             >
-              <div class="accordion-body border-0">
+              <div class="accordion-body border-0" style="max-height: 200px; overflow-y: auto;">
                 <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
                   <p><%= posts[i].comments[cIndex].comment %></p>
                 <% } %>
@@ -120,7 +120,7 @@
             </div>
           </div>
         </div>
-      <% } %>
+        
     </div>
     <div class="col-1"></div>
   </div>
