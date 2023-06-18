@@ -1,83 +1,215 @@
-var express = require('express');
-const Post = require('../models/post');
-const Like = require('../models/like');
-const Save = require('../models/save');
-const Comment = require('../models/comment');
-const mongoose = require('mongoose');
-const multer = require('multer')
-const uploads = multer({ dest: 'uploads/' })
-const fs = require('fs-extra');
-var router = express.Router();
+<% if (locals.posts) {
+  for (let i = 0; i < posts.length; i++) {
+%>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="card col-10 d-flex justify-content-center my-3">
+      <img
+        src="data:image/png;charset=utf-8;base64,<%= posts[i].image%>"
+        class="card-img-top m-2"
+        alt="Post Image"
+      />
+      <div class="card-body">
+        <h5 class="card-title border-bottom border-primary p-2 text-white">
+          <%= posts[i].title %>
+        </h5>
+        <p class="card-text ">
+          <a
+            class="badge bg-light text-dark border"
+            href="/profile/loadUser/<%= posts[i].user[0]._id %>"
+          >
+            <%= posts[i].user[0].username %>
+          </a>
+          <span class="badge bg-light text-dark border">
+            <%= new Date(posts[i].createdAt).toLocaleString() %>
+          </span>
+        </p>
+        <p class="card-text"><%= posts[i].data %></p>
+        <hr />
+        <div class="row">
+          <div class="col-8">
+            <button
+              type="button"
+              class="btn btn-primary p-0 bg-transparent border-0"
+              data-bs-toggle="modal"
+              data-bs-target="#postModal"
+              onclick="showPostModal({ postTitle: '<%= posts[i].title %>', postId: '<%= posts[i]._id %>' })"
+            >
+              <img src="/images/comment.png" width="48px" alt="Add Comment" />
+              <span class="mt-2">Add comment</span>
+            </button>
+          </div>
+          <div class="col-4">
+            <form class="m-1 d-inline" action="/post/like" method="post">
+              <input
+                type="hidden"
+                name="userId"
+                value="<%= locals.req.session.userId %>"
+              />
+              <input type="hidden" name="postId" value="<%= posts[i]._id %>" />
 
+              <span class="position-relative d-inline">
+                <img
+                  src="/images/like1.png"
+                  width="48px"
+                  class="like-button"
+                  onclick="submit()"
+                  alt="Like"
+                />
+                <p
+                  class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-secondary"
+                  style="font-size: 12px"
+                >
+                  <%= posts[i].likesCounter || "0" %>
+                </p>
+              </span>
+            </form>
+            <form class="d-inline" action="/post/save" method="post">
+              <input
+                type="hidden"
+                name="userId"
+                value="<%= locals.req.session.userId %>"
+              />
+              <input type="hidden" name="postId" value="<%= posts[i]._id %>" />
+              <span class="position-relative d-inline">
+                <img
+                  src="/images/save1.png"
+                  width="48px"
+                  class="like-button"
+                  onclick="submit()"
+                  alt="Save"
+                />
+                <p
+                  class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-secondary"
+                  style="font-size: 12px"
+                >
+                  <%= posts[i].savesCounter || "0" %>
+                </p>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <% if (posts[i].comments && posts[i].comments.length > 0) { %>
+        <div class="accordion mx-5" id="accordionExample<%= i %>">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne<%= i %>">
+              <button
+                class="accordion-button collapsed mx-2 p-0 fs-6"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse<%= i %>"
+                aria-expanded="true"
+                aria-controls="collapse<%= i %>"
+              >
+                Show comments
+              </button>
+            </h2>
+            <div
+              id="collapse<%= i %>"
+              class="accordion-collapse collapse border-0"
+              aria-labelledby="headingOne<%= i %>"
+              data-bs-parent="#accordionExample<%= i %>"
+            >
+              <div class="accordion-body border-0">
+                <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
+                  <p><%= posts[i].comments[cIndex].comment %></p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+    <div class="col-1"></div>
+  </div>
+<% }
+} %>
 
-router.post('/add',
-  uploads.single('post-image'),
-  async function (req, res, next) {
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="postModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <form action="/post/comment" method="post">
+    <input type="text" name="commentPostId" id="commentPostId" value="" />
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">
+            Add Comment
+            <br />
+            <span class="badge bg-success text-dark" id="postTitle"></span>
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <label class="form-label">Comment</label>
+          <input
+            type="text"
+            name="postComment"
+            id="postComment"
+            class="form-control"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-danger w-auto m-2 p-1"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-success w-auto m-2 p-1"
+            onclick="submit()"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 
-    let buffer, base64String = '';
+<script>
+  function showPostModal(data) {
+    document.querySelector("#postTitle").innerText = data.postTitle;
+    document.querySelector("#commentPostId").value = data.postId;
+  }
+</script>
 
-    // Read the uploaded file 
-    if (req.file) {
-      let fileContent = fs.readFileSync(req.file.path);
+<style>
+  .row {
+    margin-bottom: 20px;
+  }
 
-      // Convert the image to base64
-      buffer = Buffer.from(fileContent);
-      base64String = buffer.toString('base64');
-    }
+  .card-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
 
-    // Add the post to the database
-    try {
-      let newPost = await Post.create(Object.assign(req.body, {
-        image: base64String
-      }));
+  .card-text {
+    margin-bottom: 10px;
+  }
 
-      return res.redirect('/home');
-    } catch (err) {
-      res.status(400).json({ success: false, error: err.message });
-    }
-  });
+  .like-button {
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
 
-router.post('/like',
-  async function (req, res, next) {
-
-    // Add the post to the database
-    try {
-      const newLike = await Like.create(req.body);
-      return res.redirect('/home');
-    } catch (err) {
-      res.status(400).json({ success: false, error: err.message });
-    }
-  });
-
-router.post('/save',
-  async function (req, res, next) {
-
-    console.log('post/save');
-    // Add the post to the database
-    try {
-      const newSave = await Save.create(req.body);
-      return res.redirect('/home');
-    } catch (err) {
-      res.status(400).json({ success: false, error: err.message });
-    }
-  });
-
-router.post('/comment',
-  async function (req, res, next) {
-
-    console.log('post/comment');
-    // Add the post to the database
-    try {
-      const newSave = await Comment.create({
-        postId: req.body.commentPostId,
-        comment: req.body.postComment
-      });
-
-      return res.redirect('/home');
-    } catch (err) {
-      res.status(400).json({ success: false, error: err.message });
-    }
-  });
-
-
-module.exports = router;
+  .badge {
+    margin-right: 5px;
+  }
+</style>
