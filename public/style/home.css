@@ -26,6 +26,9 @@ header {
   width: 48px; /* Adjust the width and height as needed */
   height: 48px;
 }
+.bg-light-purple {
+  background-color: #e6e6fa; /* Light purple color */
+}
 
 
 main {
