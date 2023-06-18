@@ -5,6 +5,7 @@ body {
   background-color: #121212; /* Set a dark background color */
   color: #fff; /* Set text color to white */
 }
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -33,7 +34,7 @@ body {
 .contact-option {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .contact-link {
@@ -41,6 +42,11 @@ body {
   align-items: center;
   text-decoration: none;
   color: #fff;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #00bcd4; /* Change color on hover */
 }
 
 .contact-icon {
