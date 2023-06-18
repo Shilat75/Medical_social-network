@@ -49,10 +49,11 @@ async function loadPosts() {
       as: "user"
     }
   },
+  { $sort: { "createdAt": -1 } },
   {
     $limit: 5
-  },
-  { $sort: { _id: -1 } }]);
+  }]);
+  
 
   return posts;
 
