@@ -21,7 +21,6 @@ router.get("/unfollow/:_id", async function (req, res, next) {
 
 
     try {
-        console.log('~~~~~~~~~~~~~~unfollowe')
         let follow = await Follow.findOneAndDelete({ _id: req.params._id })
         res.redirect('/personalArea/view');
     } catch (error) {

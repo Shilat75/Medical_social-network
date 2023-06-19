@@ -24,7 +24,7 @@
 
 <script>
   function unfollow(follow) {
-    fetch("http://localhost:3456/personalArea/unfollow/" + follow._id)
+    fetch("http://localhost:3000/personalArea/unfollow/" + follow._id)
       .then((res) => {
         console.log(res);
       })
