@@ -33,8 +33,11 @@ router.post('/add',
 
       return res.redirect('/home');
     } catch (err) {
-      res.status(400).json({ success: false, error: err.message });
+      const errorMessage = err.message;
+      return res.send(`<script>alert('${"An empty post cannot be published"}');</script><script>window.location.href='/home';</script>`
+      );
     }
+
   });
 
 router.post('/like',
@@ -66,9 +69,9 @@ router.get('/delete/:postId',
   async function (req, res, next) {
 
     console.log(`post/delete [${req.params.postId}]`);
-    await Post.findByIdAndDelete({ _id: req.params.postId});
+    await Post.findByIdAndDelete({ _id: req.params.postId });
     return res.redirect('/personalArea/view');
-    
+
   });
 
 router.post('/comment',
