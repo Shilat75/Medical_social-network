@@ -1,23 +1,28 @@
-  <% if (locals.posts ){ for (let i=0; i< posts.length; i++) { %>
+<% if (locals.posts) {
+  for (let i = 0; i < posts.length; i++) {
+%>
   <div class="row">
     <div class="col-1"></div>
     <div class="card col-10 d-flex justify-content-center my-3">
       <% if( locals.deletePost && deletePost) { %>
-      <div class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-secondary">
-        <a href="/post/delete/<%= posts[i]._id %>">
-          <i class="fa-2xl fa-beat text-danger fa-solid fa-trash-can"></i>
-        </a>
-      </div>
-      <% } %>
+        <div class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-secondary">
+          <a href="/post/delete/<%= posts[i]._id %>">
+            <i class="fa-2xl fa-beat text-danger fa-solid fa-trash-can"></i>
+          </a>
+        </div>
+        <% } %>
+
       <img
         src="data:image/png;charset=utf-8;base64,<%= posts[i].image%>"
-        class="card-img-top m-2" style="max-width:400px"
+        class="card-img-top m-2"
+        style="max-width:400px"
+        alt="Post Image"
       />
       <div class="card-body">
-        <h5 class="card-title border border-primary p-2 rounded-pill">
+        <h5 class="card-title border-bottom border-primary p-2 text-white">
           <%= posts[i].title %>
         </h5>
-        <p class="card-title">
+        <p class="card-text ">
           <a
             class="badge bg-light text-dark border"
             href="/profile/loadUser/<%= posts[i].user[0]._id %>"
@@ -25,7 +30,7 @@
             <%= posts[i].user[0].username %>
           </a>
           <span class="badge bg-light text-dark border">
-            [<%= new Date(posts[i].createdAt).toLocaleString() %>]
+            <%= new Date(posts[i].createdAt).toLocaleString() %>
           </span>
         </p>
         <p class="card-text"><%= posts[i].data %></p>
@@ -33,14 +38,14 @@
         <div class="row">
           <div class="col-8">
             <button
-              data-name="addComments"
               type="button"
-              class="btn btn-primary p-0"
+              class="btn btn-primary p-0 bg-transparent border-0"
               data-bs-toggle="modal"
               data-bs-target="#postModal"
-              onclick="showPostModal({ postTitle: '<%= posts[i].title %>', postId: '<%= posts[i]._id %>'})"
+              onclick="showPostModal({ postTitle: '<%= posts[i].title %>', postId: '<%= posts[i]._id %>' })"
             >
-              Add comment
+              <img src="/images/comment.png" width="48px" alt="Add Comment" />
+              <span class="mt-2">Add comment</span>
             </button>
           </div>
           <div class="col-4">
@@ -54,10 +59,11 @@
 
               <span class="position-relative d-inline">
                 <img
-                  src="/images/like.png"
+                  src="/images/like1.png"
                   width="48px"
                   class="like-button"
                   onclick="submit()"
+                  alt="Like"
                 />
                 <p
                   class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-secondary"
@@ -76,10 +82,11 @@
               <input type="hidden" name="postId" value="<%= posts[i]._id %>" />
               <span class="position-relative d-inline">
                 <img
-                  src="/images/saved.png"
+                  src="/images/save1.png"
                   width="48px"
                   class="like-button"
                   onclick="submit()"
+                  alt="Save"
                 />
                 <p
                   class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-secondary"
@@ -93,42 +100,41 @@
         </div>
       </div>
       <hr />
-      <% if (posts[i].comments && posts[i].comments.length >0 ){ %>
-      <!-- -->
-      <div class="accordion mx-5 id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button
-              class="accordion-button collapsed mx-2"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
+      <% if (posts[i].comments && posts[i].comments.length > 0) { %>
+        <div class="accordion mx-5" id="accordionExample<%= i %>">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne<%= i %>">
+              <button
+                class="accordion-button collapsed mx-2 p-0 fs-6"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse<%= i %>"
+                aria-expanded="true"
+                aria-controls="collapse<%= i %>"
+              >
+                Show comments
+              </button>
+            </h2>
+            <div
+              id="collapse<%= i %>"
+              class="accordion-collapse collapse border-0"
+              aria-labelledby="headingOne<%= i %>"
+              data-bs-parent="#accordionExample<%= i %>"
             >
-              Show comments
-            </button>
-          </h2>
-          <div
-            id="collapseOne"
-            class="accordion-collapse collapse border-0"
-            aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body border-0">
-              <% for (let cIndex=0; cIndex< posts[i].comments.length; cIndex++) {
-              %>
-              <p><%= posts[i].comments[cIndex].comment %></p>
-              <% } %>
+              <div class="accordion-body border-0">
+                <% for (let cIndex = 0; cIndex < posts[i].comments.length; cIndex++) { %>
+                  <p><%= posts[i].comments[cIndex].comment %></p>
+                <% } %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <% } // Comments%>
+      <% } %>
     </div>
     <div class="col-1"></div>
   </div>
-  <% } }%>
+<% }
+} %>
 
 <!-- Modal -->
 <div
@@ -144,7 +150,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">
-            Add Comment <br />
+            Add Comment
+            <br />
             <span class="badge bg-success text-dark" id="postTitle"></span>
           </h1>
           <button
@@ -186,8 +193,32 @@
 
 <script>
   function showPostModal(data) {
-    // Get the modal
     document.querySelector("#postTitle").innerText = data.postTitle;
     document.querySelector("#commentPostId").value = data.postId;
   }
 </script>
+
+<style>
+  .row {
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    margin-bottom: 10px;
+  }
+
+  .like-button {
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+
+  .badge {
+    margin-right: 5px;
+  }
+</style>
