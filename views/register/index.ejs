@@ -5,7 +5,6 @@
         <span>
           <h1>Health&nbsp;Connect</h1>
         </span>
-
       </div>
     </nav>
     <hr />
@@ -45,7 +44,7 @@
             <div class="col-1">*</div>
             <div class="col-10">
               <input
-                type="text"
+                type="password"
                 id="password-input"
                 name="password"
                 placeholder="Enter password"
@@ -80,6 +79,7 @@
               />
             </div>
           </div>
+          
           <div class="row mb-3">
             <div class="col-1"></div>
             <div class="col-10">
@@ -91,8 +91,14 @@
                 class="form-control"
               />
             </div>
+            <span id="error-message"
+          class="error-message"
+           style="color: white; 
+           font-weight: bold;">
+           <%= req.session.registerError %>
+         </span>
           </div>
-          <span id="error-message" class="error-message"></span>
+         
           <button type="submit" class="mb-5 mt-3">
             Submit
           </button>

@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
     layout: true,
     page: 'login',
     req: req,
+    
   });
 });
 
