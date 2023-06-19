@@ -34,6 +34,7 @@
     "sticky-session": "^1.1.2"
   },
   "devDependencies": {
-    "eslint": "^8.43.0"
+    "eslint": "^8.43.0",
+    "nodemon": "^2.0.22"
   }
 }
