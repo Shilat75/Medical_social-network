@@ -1,6 +1,6 @@
 var express = require('express');
 const User = require('../models/user');
-const { validateEmail, validatePassword } = require('./tests./logintest.test'); // Import the validation functions
+const {validateEmail,validatePassword}=require('../tests/logintest.test')
 var router = express.Router();
 
 router.post("/", async function (req, res, next) {
