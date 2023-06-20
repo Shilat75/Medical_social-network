@@ -1,16 +1,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: monospace;
   background-color: #121212; /* Set a dark background color */
   color: #fff; /* Set text color to white */
+  text-decoration: none;
+
 }
 
 .container {
   max-width: 1200px; /* Increase the max-width value */
   margin: 0 auto;
   padding: 10px; /* Increase the padding value for more height */
-  background-color: #585858;
+  background-color: #121212; ;
   color: #fff;
 }
 
@@ -58,9 +60,7 @@ body {
   margin-right: 10px;
 }
 
-ul li a {
-  color: #fff; /* Set text color of ul li to white */
-}
+
 footer {
   background-color: #333;
   color: #fff;
@@ -103,4 +103,15 @@ footer {
 .footer-bottom {
   margin-top: 10px;
   text-align: center;
+}
+nav ul li {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 50px;
+  display: inline-block;
+  animation-timing-function: ease-in;
+  animation-delay: var(300ms);
+}
+nav ul li a {
+  color: #d3d3d3;
+  padding:10px;
 }

@@ -3,9 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-image: url(/images/rekaH.jpg);
-  background-size: cover;
-  background-position: center;
+  background-color: #121212; /* Set a dark background color */
+
 }
 
 .container {
@@ -55,11 +54,11 @@ nav ul {
 }
 
 nav ul li {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 nav ul li a {
-  color: #000000;
+  color: white;
   /* Set the color to black */
   text-decoration: none;
   font-size: 20px;
@@ -68,9 +67,9 @@ nav ul li a {
 }
 
 nav ul li a img {
-  width: 80px;
+  width: 50px;
   /* Adjust the width of the icon */
-  height: 80px;
+  height: 50px;
   /* Adjust the height of the icon */
   margin-bottom: -20px;
 }

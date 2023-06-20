@@ -25,9 +25,13 @@ router.post("/", async function (req, res, next) {
 
             res.redirect('/personalArea/view');
         } else {
-            // Display an error alert on the screen
-            const errorMessage = 'Invalid email or password.';
-            return res.send(`<script>alert('${errorMessage}');</script>`);
+            /// ...
+
+const errorMessage = 'Invalid email or password.';
+return res.send(`<script>alert('${errorMessage}'); window.location.href = '/personalArea/view';</script>`);
+
+// ...
+
         }
     } catch (err) {
         console.log(err);
