@@ -6,7 +6,7 @@
     <input type="hidden" name="userId" value="<%= req.session.userId %>" />
     <br />
     <input type="hidden" name="following" value="<%= req.params.userId %>" />
-    <button>Follow</button>
+    <button  onclick="alert('You clicked Follow!')">Follow</button>
   </form>
   <hr />
   <%- include('./followers') %>
