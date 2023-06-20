@@ -47,8 +47,14 @@ router.post('/', async function (req, res, next) {
         Object.assign(req.body, { level: 'starter' }),
         { upsert: true, new: true }
       );
-      req.session.registerError = null;          
-      res.redirect('/login');
+      req.session.registerError = null;   
+      // ...
+
+const errorMessage = 'SUCCESSFULLY REGISTERED!!';
+return res.send(`<script>alert('${errorMessage}'); window.location.href = '/login';</script>`);
+
+// ...
+
     } catch (err) {
       console.log(err);
       res.status(400).json({ success: false, error: err.message });
