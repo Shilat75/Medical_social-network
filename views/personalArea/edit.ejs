@@ -116,7 +116,7 @@
           </div>
         </div>
         
-        
+       
         <div class="row">
           <div class="col-1"></div>
           <button type="submit" class="btn btn-success col-4 m-3">
@@ -129,6 +129,12 @@
           >
             Close
           </button>
+          <span id="error-message"
+          class="error-message"
+           style="color: white; 
+           font-weight: bold;">
+           <%= req.session.registerError %>
+         </span>
         </div>
       </div>
     </div>
