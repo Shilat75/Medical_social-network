@@ -25,13 +25,14 @@ router.post('/add',
       base64String = buffer.toString('base64');
     }
 
-    // Add the post to the database
+    // Add the post to the database    
     try {
       let newPost = await Post.create(Object.assign(req.body, {
         image: base64String
       }));
 
-      return res.redirect('/home');
+      const successMessage = "Successfully published a post";
+      return res.send(`<script>alert('${successMessage}');</script><script>window.location.href='/home';</script>`);
     } catch (err) {
       const errorMessage = err.message;
       return res.send(`<script>alert('${"An empty post cannot be published"}');</script><script>window.location.href='/home';</script>`
@@ -84,8 +85,9 @@ router.post('/comment',
         postId: req.body.commentPostId,
         comment: req.body.postComment
       });
-
-      return res.redirect('/home');
+      // Success message
+      const successMessage = "Successfully published a post";
+      return res.send(`<script>alert('${successMessage}');</script><script>window.location.href='/home';</script>`);
     } catch (err) {
       res.status(400).json({ success: false, error: err.message });
     }
