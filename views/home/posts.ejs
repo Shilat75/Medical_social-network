@@ -6,7 +6,7 @@
     <div class="card col-10 d-flex justify-content-center my-3">
       <% if( locals.deletePost && deletePost) { %>
         <div class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-secondary">
-          <a href="/post/delete/<%= posts[i]._id %>">
+          <a href="/post/delete/<%= posts[i]._id %>"   onclick="return confirm('Are you sure you want to delete this post?');">
             <i class="fa-2xl fa-beat text-danger fa-solid fa-trash-can"></i>
           </a>
         </div>

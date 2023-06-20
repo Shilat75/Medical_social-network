@@ -7,25 +7,25 @@
   </thead>
   <tbody>
     <% for (let i=0; i< follows.length; i++ ){ %>
-    <tr>
-      <td><%= follows[i].following.username %></td>
-      <td>
-        <button
-          class="btn btn-warning"
-          onclick="unfollow({_id: '<%= follows[i]._id %>'})"
-        >
-          Unfollow
-        </button>
-      </td>
-    </tr>
-    <%}%>
+      <tr>
+        <td>
+          <%= follows[i].following.username %>
+        </td>
+        <td>
+          <button class="btn btn-warning" onclick="unfollow({_id: '<%= follows[i]._id %>'})">
+            Unfollow
+          </button>
+        </td>
+      </tr>
+      <%}%>
   </tbody>
 </table>
 
 <script>
-   function unfollow(follow) {
+  function unfollow(follow) {
+
     fetch("/personalArea/unfollow/" + follow._id)
-      .then((res) => {
+   .then((res) => {
         console.log(res);
       })
       .catch((e) => {
