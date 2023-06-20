@@ -5,8 +5,6 @@ body {
   font-family: Arial, sans-serif;
   background-color: #121212; /* Set a dark background color */
   color: #fff; /* Set text color to white */
-  animation: slideIn 2s ease-in-out forwards;
-
 }
 
 .container {
@@ -15,16 +13,7 @@ body {
   padding: 20px;
   text-align: center;
 }
-@keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
+
 
 header {
   padding-bottom: 20px;
