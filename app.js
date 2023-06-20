@@ -44,8 +44,8 @@ app.use('/contact', (req, res, next) => {
   });
 });
 
-app.use('/aboutUs', (req, res, next) => {
-  res.render('aboutUs', {
+app.use('/aboutus', (req, res, next) => {
+  res.render('aboutus', {
     page: 'aboutUs'
   });
 });

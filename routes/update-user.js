@@ -3,7 +3,7 @@ const User = require('../models/user');
 var router = express.Router();
 
 router.post("/", async function (req, res, next) {
-    if (!req.session.user._id) {
+    if (!req.session.user._id ) {
         return res.redirect('login', {
             layout: true,
             page: 'login',
@@ -13,6 +13,7 @@ router.post("/", async function (req, res, next) {
     }
 
     try {
+        
         await User.findByIdAndUpdate(req.session.user._id,req.body);
         let user = await User.findOne({ _id: req.session.user._id });
 
