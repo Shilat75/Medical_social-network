@@ -75,13 +75,13 @@ router.get('/delete/:postId',
 
   });
 
-router.post('/comment',
-  async function (req, res, next) {
-
+  router.post('/comment', async function (req, res, next) {
     console.log('post/comment');
-    // Add the post to the database
     try {
-      const newSave = await Comment.create({
+      if (!req.body.commentPostId) {
+        throw new Error("postId is required");
+      }
+      const newComment = await Comment.create({
         postId: req.body.commentPostId,
         comment: req.body.postComment
       });
@@ -92,6 +92,7 @@ router.post('/comment',
       res.status(400).json({ success: false, error: err.message });
     }
   });
+  
 
 
 module.exports = router;

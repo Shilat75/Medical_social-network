@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url(/images/rekaH.jpg);
+    background-color: #121212; /* Set a dark background color */
     background-size: cover;
     background-position: center;
   }
@@ -32,15 +32,17 @@ body {
   }
   
   nav ul li a {
-    color: #000000; /* Set the color to black */
+    color: white; /* Set the color to black */
     text-decoration: none;
     font-size: 20px; /* Increase the font size */
     font-weight: bold;
+    animation: slideIn 2s ease-in-out forwards;
+
   }
   
 nav ul li a img {
-    width: 80px; /* Adjust the width of the icon */
-    height: 80px; /* Adjust the height of the icon */
+    width: 50px; /* Adjust the width of the icon */
+    height: 50px; /* Adjust the height of the icon */
     margin-bottom: -20px; 
   
   }
@@ -51,22 +53,38 @@ nav ul li a span {
   }
 
   main {
-    background-color: rgba(113, 183, 134, 0.8);
-    padding: 40px;
+    background-color: rgb(216, 137, 240);
+    padding: 20px;
+    animation: slideIn 2s ease-in-out forwards;
+    box-shadow: 0 0 50px 0 #d3d3d3, 0 0 50px 0 #d3d3d3, 0 0 50px 0 #d3d3d3 inset;
+
   }
-  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+  main:hover{
+    background-color: #eeeed0;
+    
+  }
   h1 {
-    color: #ffffff;
+    color: #121212;
     font-size: 24px;
   }
   
   h2 {
-    color: #333333;
+    color: #121212;
     font-size: 28px;
   }
   
   p {
-    color: #666666;
+    color: #121212;
     font-size: 16px;
   }
   
