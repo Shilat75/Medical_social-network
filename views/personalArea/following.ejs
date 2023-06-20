@@ -24,6 +24,19 @@
 
 <script>
   function unfollow(follow) {
+  const serverURL = "https://project-manag-sd.onrender.com"; // Replace with your server URL
+  const shovelLink = "personalArea/unfollow"; // Replace with your shovel link
+
+  fetch(serverURL + "/" + shovelLink + "/" + follow._id)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}
+
+ /* function unfollow(follow) {
     fetch("http://localhost:3000/personalArea/unfollow/" + follow._id)
       .then((res) => {
         console.log(res);
@@ -31,5 +44,5 @@
       .catch((e) => {
         console.log(e);
       });
-  }
+  }*/
 </script>
