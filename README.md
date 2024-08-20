@@ -62,6 +62,7 @@ The pipeline consists of the following steps:
 4. Deployment (only in CD)
 
 ## Contributors
+Shilat Hakimi
 reut avitan 
 tair mazuz 
 gitit dadon 
